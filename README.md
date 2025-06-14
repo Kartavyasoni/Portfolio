@@ -1,3 +1,3 @@
 # Kartavya Soni Portfolio
 
-This repository contains a simple personal website showcasing Kartavya Soni's skills and projects. Open `index.html` in a web browser to view the site.
+A comic book–styled personal website for Kartavya Soni. Open `index.html` in your browser to explore the superhero-inspired portfolio.
