@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kartavya Soni | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,66 +23,71 @@
         </ul>
     </nav>
 
-    <section id="home" class="hero">
+    <header id="home" class="hero">
         <div class="hero-image">
-            <img src="images/kartavya-portrait.jpg" alt="Kartavya Soni portrait">
+            <img src="images/hero-avatar.png" alt="Kartavya Soni">
         </div>
-        <div class="hero-text">
+        <div class="hero-text" data-aos="fade-left">
             <h1>Kartavya Soni</h1>
             <p class="subtitle">Graduate Student | Data Science &amp; AI Enthusiast</p>
-            <p class="intro">I’m a Computer Science Master’s student at Florida Atlantic University, specializing in data science, AI systems, and predictive analytics. I build real-world solutions with intelligent models and elegant code.</p>
+            <p class="intro">I’m a Master’s student at Florida Atlantic University building intelligent, AI-powered systems and real-world data science tools.</p>
             <div class="hero-links">
-                <a class="btn" href="https://linkedin.com/in/kartavyasoni8">LinkedIn</a>
-                <a class="btn" href="https://github.com/">GitHub</a>
-                <a class="btn" href="Kartavya_Soni_Resume.pdf">Download Resume</a>
+                <a class="btn" href="https://linkedin.com/in/kartavyasoni8" target="_blank">LinkedIn</a>
+                <a class="btn" href="https://github.com/kartavyasoni" target="_blank">GitHub</a>
+                <a class="btn" href="Kartavya_Soni_Resume.pdf" download>Resume</a>
             </div>
         </div>
-    </section>
+        <div class="scroll-indicator">
+            <span>Scroll down</span>
+        </div>
+    </header>
 
-    <section id="about">
+    <section id="about" data-aos="fade-up">
         <h2>About Me</h2>
-        <p>Kartavya Soni is a Computer Science master’s student at Florida Atlantic University with a passion for data science and leadership. He builds machine learning models, dashboards, and intelligent systems that drive business results. With experience in predictive analytics, React development, and student leadership, he combines technical skill with teamwork and communication.</p>
+        <p>I’m Kartavya Soni, a Computer Science master’s student at Florida Atlantic University specializing in machine learning and data science. I build ML models, dashboards, and intelligent systems that deliver real-world results.</p>
     </section>
 
-    <section id="projects">
+    <section id="projects" data-aos="fade-up">
         <h2>Projects</h2>
         <div class="project-grid">
             <div class="project">
                 <h3>Loan Meter</h3>
-                <p>ML model for loan approval (84% accuracy).</p>
-                <p class="tools">Tools: Python, Scikit-Learn, Pandas</p>
+                <p>ML loan approval pipeline (84% accuracy).</p>
+                <p class="tools">Python, Scikit-Learn</p>
             </div>
             <div class="project">
-                <h3>FAA Bird Strike Analytics Dashboard</h3>
-                <p>Analyzed 100K+ records to visualize seasonal risk.</p>
-                <p class="tools">Tools: Python, Tableau</p>
+                <h3>FAA Bird Strike Dashboard</h3>
+                <p>Interactive Tableau visual analytics.</p>
+                <p class="tools">Python, Tableau</p>
             </div>
             <div class="project">
-                <h3>Amazon Sales Performance Engine</h3>
-                <p>Performed advanced analytics on 5 years of data.</p>
-                <p class="tools">Tools: Power BI, SQL</p>
+                <h3>Amazon Sales Engine</h3>
+                <p>Power BI KPIs and forecasting.</p>
+                <p class="tools">Power BI, SQL</p>
             </div>
         </div>
     </section>
 
-    <section id="experience">
+    <section id="experience" data-aos="fade-up">
         <h2>Experience</h2>
-        <div class="experience-item">
-            <h3>Data Science Intern – Unified Mentor <span class="date">(Jan–Apr 2024)</span></h3>
+        <div class="timeline-item">
+            <h3>Data Science Intern @ Unified Mentor</h3>
+            <span class="date">Jan–Apr 2024</span>
             <ul>
                 <li>Achieved 95% prediction accuracy on loan defaults</li>
                 <li>Improved risk assessment efficiency by 35%</li>
             </ul>
         </div>
-        <div class="experience-item">
-            <h3>Software Intern – TatvaSoft <span class="date">(Jul–Aug 2023)</span></h3>
+        <div class="timeline-item">
+            <h3>Software Intern @ TatvaSoft</h3>
+            <span class="date">Jul–Aug 2023</span>
             <ul>
                 <li>Developed and deployed an AWS-based UI system</li>
             </ul>
         </div>
     </section>
 
-    <section id="skills">
+    <section id="skills" data-aos="fade-up">
         <h2>Skills</h2>
         <div class="skills-grid">
             <div>
@@ -87,34 +95,46 @@
                 <p>Python, SQL, JavaScript, R</p>
             </div>
             <div>
+                <h4>Frameworks</h4>
+                <p>Scikit-Learn, TensorFlow, OpenCV</p>
+            </div>
+            <div>
                 <h4>Tools</h4>
                 <p>Tableau, Power BI, AWS, Git, Jupyter</p>
             </div>
             <div>
-                <h4>Frameworks</h4>
-                <p>TensorFlow, Scikit-Learn, Pandas, OpenCV</p>
+                <h4>Soft Skills</h4>
+                <p>Problem-solving, Leadership, Time Management</p>
             </div>
         </div>
     </section>
 
-    <section id="leadership">
+    <section id="leadership" data-aos="fade-up">
         <h2>Leadership</h2>
-        <p>Elected Student Governor at FAU, representing more than 5,000 students and overseeing events, policy, and digital engagement initiatives.</p>
+        <p>Student Governor @ FAU (2025–2026). Represented 5,000+ students, launched a digital feedback tool, and led policy advocacy and events.</p>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="contact" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:ksoni2024@fau.edu">ksoni2024@fau.edu</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/kartavyasoni8">linkedin.com/in/kartavyasoni8</a></p>
-        <form>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email">
-            <label for="message">Message</label>
-            <textarea id="message" name="message"></textarea>
-            <button type="submit">Send</button>
-        </form>
+        <div class="contact-container">
+            <div class="contact-details">
+                <p>Email: <a href="mailto:ksoni2024@fau.edu">ksoni2024@fau.edu</a></p>
+                <p>Location: Boca Raton, Florida</p>
+            </div>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Name">
+                <input type="email" name="email" placeholder="Email">
+                <textarea name="message" placeholder="Message"></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
     </section>
+
+    <footer>
+        <p>Designed &amp; Built by Kartavya Soni © 2025</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ once: true });</script>
 </body>
 </html>
