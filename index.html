@@ -3,81 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartavya Soni - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Kartavya Soni | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="hero">
-        <img src="images/hero-avatar.png" alt="Hero avatar" class="avatar">
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-image">
+            <img src="images/kartavya-portrait.jpg" alt="Kartavya Soni portrait">
+        </div>
         <div class="hero-text">
             <h1>Kartavya Soni</h1>
-            <p class="tagline">Data Science &amp; AI Enthusiast | MSc @ FAU</p>
-            <div class="social">
-                <a href="mailto:ksoni2024@fau.edu">Email</a>
-                <a href="https://linkedin.com/in/kartavyasoni8">LinkedIn</a>
-                <a href="https://github.com/">GitHub</a>
-                <a href="resume.pdf">Resume</a>
+            <p class="subtitle">Graduate Student | Data Science &amp; AI Enthusiast</p>
+            <p class="intro">I’m a Computer Science Master’s student at Florida Atlantic University, specializing in data science, AI systems, and predictive analytics. I build real-world solutions with intelligent models and elegant code.</p>
+            <div class="hero-links">
+                <a class="btn" href="https://linkedin.com/in/kartavyasoni8">LinkedIn</a>
+                <a class="btn" href="https://github.com/">GitHub</a>
+                <a class="btn" href="Kartavya_Soni_Resume.pdf">Download Resume</a>
             </div>
         </div>
-    </header>
-
-    <section id="about" class="panel">
-        <h2 class="bubble">My Origin Story</h2>
-        <p>I’m Kartavya Soni, a Master’s student at FAU, passionate about AI and Data Science. I specialize in building ML models and dashboards that solve real-world problems. I combine predictive analytics with leadership experience to create intelligent systems.</p>
     </section>
 
-    <section id="skills" class="panel">
-        <h2 class="bubble">Superpowers</h2>
-        <ul>
-            <li><strong>Languages:</strong> Python, JavaScript, SQL, R</li>
-            <li><strong>Frameworks:</strong> Scikit-Learn, TensorFlow, Keras, Pandas, OpenCV</li>
-            <li><strong>Tools:</strong> Tableau, Power BI, Git, AWS, Jupyter</li>
-            <li><strong>Soft Skills:</strong> Leadership, Problem-Solving, Communication</li>
-        </ul>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Kartavya Soni is a Computer Science master’s student at Florida Atlantic University with a passion for data science and leadership. He builds machine learning models, dashboards, and intelligent systems that drive business results. With experience in predictive analytics, React development, and student leadership, he combines technical skill with teamwork and communication.</p>
     </section>
 
-    <section id="projects" class="panel">
-        <h2 class="bubble">Missions Completed</h2>
-        <div class="project">
-            <img src="images/project-loan-meter.png" alt="Loan Meter project">
-            <h3>Loan Meter</h3>
-            <p>Used ML to build an 84% accurate approval model.</p>
-        </div>
-        <div class="project">
-            <img src="images/project-bird-strike.png" alt="Bird Strike project">
-            <h3>FAA Bird Strike Dashboard</h3>
-            <p>Analyzed 100K records and built Tableau visualizations.</p>
-        </div>
-        <div class="project">
-            <img src="images/project-amazon-sales.png" alt="Amazon Sales project">
-            <h3>Amazon Sales Engine</h3>
-            <p>Forecasted Q4 surge and built a Power BI dashboard.</p>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project">
+                <h3>Loan Meter</h3>
+                <p>ML model for loan approval (84% accuracy).</p>
+                <p class="tools">Tools: Python, Scikit-Learn, Pandas</p>
+            </div>
+            <div class="project">
+                <h3>FAA Bird Strike Analytics Dashboard</h3>
+                <p>Analyzed 100K+ records to visualize seasonal risk.</p>
+                <p class="tools">Tools: Python, Tableau</p>
+            </div>
+            <div class="project">
+                <h3>Amazon Sales Performance Engine</h3>
+                <p>Performed advanced analytics on 5 years of data.</p>
+                <p class="tools">Tools: Power BI, SQL</p>
+            </div>
         </div>
     </section>
 
-    <section id="experience" class="panel">
-        <h2 class="bubble">Allies &amp; Adventures</h2>
-        <ul>
-            <li>Data Science Intern @ Unified Mentor – built risk prediction models with 95% accuracy</li>
-            <li>React Dev Intern @ TatvaSoft – built and deployed AWS-based UI system</li>
-        </ul>
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience-item">
+            <h3>Data Science Intern – Unified Mentor <span class="date">(Jan–Apr 2024)</span></h3>
+            <ul>
+                <li>Achieved 95% prediction accuracy on loan defaults</li>
+                <li>Improved risk assessment efficiency by 35%</li>
+            </ul>
+        </div>
+        <div class="experience-item">
+            <h3>Software Intern – TatvaSoft <span class="date">(Jul–Aug 2023)</span></h3>
+            <ul>
+                <li>Developed and deployed an AWS-based UI system</li>
+            </ul>
+        </div>
     </section>
 
-    <section id="certificates" class="panel">
-        <h2 class="bubble">The Hero’s Arsenal</h2>
-        <ul>
-            <li>ML – Stanford/Coursera</li>
-            <li>NumPy &amp; Pandas – LinkedIn</li>
-            <li>Cloud, Git, Power BI</li>
-        </ul>
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div>
+                <h4>Languages</h4>
+                <p>Python, SQL, JavaScript, R</p>
+            </div>
+            <div>
+                <h4>Tools</h4>
+                <p>Tableau, Power BI, AWS, Git, Jupyter</p>
+            </div>
+            <div>
+                <h4>Frameworks</h4>
+                <p>TensorFlow, Scikit-Learn, Pandas, OpenCV</p>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" class="panel">
-        <h2 class="bubble">Call for Help</h2>
+    <section id="leadership">
+        <h2>Leadership</h2>
+        <p>Elected Student Governor at FAU, representing more than 5,000 students and overseeing events, policy, and digital engagement initiatives.</p>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
         <p>Email: <a href="mailto:ksoni2024@fau.edu">ksoni2024@fau.edu</a></p>
         <p>LinkedIn: <a href="https://linkedin.com/in/kartavyasoni8">linkedin.com/in/kartavyasoni8</a></p>
-        <p>Location: Boca Raton, FL</p>
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+            <button type="submit">Send</button>
+        </form>
     </section>
 </body>
 </html>
