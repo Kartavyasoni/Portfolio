@@ -129,3 +129,34 @@ if (document.getElementById('images-container')) {
     renderProjects();
     startAutoRotate();
 }
+
+// Contact Form Submission
+const contactForm = document.getElementById('contact-form');
+
+contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const company = document.getElementById('company').value;
+    const message = document.getElementById('message').value;
+
+    if (!validateEmail(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    // Simulate sending data to email
+    console.log('Sending data:', { name, email, company, message });
+
+    // Display success message
+    alert('Your message has been sent successfully!');
+
+    // Reset form
+    contactForm.reset();
+});
+
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
