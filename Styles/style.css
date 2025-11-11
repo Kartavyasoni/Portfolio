@@ -389,8 +389,121 @@ header {
     }
 }
 
+/* Experience Section */
+.experience-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 3rem 5rem;
+    gap: 2rem;
+    color: #e6edf3;
+}
 
+.experience-container {
+    display: flex;
+    flex: 1;
+    gap: 2rem;
+}
 
+.experience-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skills-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.additional-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Timeline Style */
+.experience-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-left: 2px solid #61dafb;
+    position: relative;
+}
+
+.experience-item::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background-color: #61dafb;
+    border-radius: 50%;
+    position: absolute;
+    left: -7px;
+}
+
+.experience-item h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.experience-item p {
+    font-size: 1rem;
+    color: #9da5b4;
+    margin: 0;
+}
+
+/* Skills and Tools */
+.skills-column ul,
+.additional-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-column li,
+.additional-column li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.skills-column li img,
+.additional-column li img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.skills-column li::before,
+.additional-column li::before {
+    content: none; /* Remove default circle */
+}
+
+.skills-column ul li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skills-column ul li img {
+    margin-right: 0.5rem;
+}
+
+.skills-column h2,
+.additional-column h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
 
 .section {
     padding: 3rem 1rem;
@@ -519,4 +632,61 @@ footer {
 
 .send-message-btn:hover {
     background: #61dafb;
+}
+
+/* Horizontal Bar Graph for Language Levels */
+
+.language-level {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.language-logo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.slider-container label {
+    font-size: 1rem;
+    color: #e6edf3;
+    flex: 1;
+}
+
+.slider-container input[type="range"] {
+    flex: 2;
+    appearance: none;
+    height: 10px;
+    background: #161b22;
+    border-radius: 5px;
+    outline: none;
+    cursor: not-allowed;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #61dafb;
+    border-radius: 50%;
+    cursor: not-allowed;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.slider-container input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #61dafb;
+    border-radius: 50%;
+    cursor: not-allowed;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
