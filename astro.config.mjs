@@ -9,8 +9,7 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: replace with the production domain once deployed.
-  site: 'https://kartavya-portfolio.vercel.app',
+  site: 'https://kartavyasoni.vercel.app',
 
   integrations: [react(), mdx(), sitemap()],
 

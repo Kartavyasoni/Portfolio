@@ -13,8 +13,7 @@ export const site = {
     'Computer Science Master’s graduate specializing in Data Engineering, AI, Machine Learning, and Full-Stack Data Systems.',
   description:
     'Personal portfolio of Kartavya Soni — Data Engineer and AI/ML practitioner building production-grade intelligent systems, from ETL pipelines to deployed machine learning.',
-  // TODO: replace with the production domain once deployed.
-  url: 'https://kartavya-portfolio.vercel.app',
+  url: 'https://kartavyasoni.vercel.app',
   email: 'sonikartavya2003@outlook.com',
   location: 'Erlangen, Germany',
 } as const;
