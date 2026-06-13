@@ -17,35 +17,44 @@ export type TimelineEntry = {
 export const timeline: TimelineEntry[] = [
   {
     kind: 'education',
-    period: '2023 — 2025',
-    title: 'M.Sc. Computer Science',
-    org: 'Friedrich-Alexander-Universität (FAU)',
+    period: '2024 — 2026',
+    title: 'M.S. Computer Science',
+    org: 'Florida Atlantic University · Boca Raton, FL',
     summary:
-      'Specialized in data systems, machine learning, and distributed computing.',
-    featured: true,
-  },
-  {
-    kind: 'experience',
-    period: '2024 — Present',
-    title: 'Data Engineering — Working Student',
-    org: 'Placeholder Company',
-    summary:
-      'Built and maintained batch + streaming pipelines feeding analytics and ML.',
+      'GPA 3.96. Focused on machine learning, data systems, and applied analytics.',
     featured: true,
   },
   {
     kind: 'leadership',
-    period: '2023 — 2024',
-    title: 'Student Tech Lead',
-    org: 'University Data Society',
-    summary: 'Led workshops and mentored peers on data tooling and ML basics.',
+    period: '2025 — 2026',
+    title: 'Governor, Student Government',
+    org: 'Florida Atlantic University · Davie, FL',
+    summary:
+      'Led a 7-person Agile team serving 5,000+ students and optimized a $300K budget with time-series forecasting, cutting fiscal variance by 8%.',
     featured: true,
   },
   {
+    kind: 'experience',
+    period: 'Dec 2023 — Jun 2024',
+    title: 'Machine Learning Engineer',
+    org: 'Unified Mentor · Gurugram, India',
+    summary:
+      'Built a data observability framework that cut production model incidents by 40%, and designed AWS SageMaker MLOps pipelines with versioning and A/B evaluation gates.',
+    featured: true,
+  },
+  {
+    kind: 'experience',
+    period: 'Aug 2023 — Nov 2023',
+    title: 'Data Science Intern',
+    org: 'Remote',
+    summary:
+      'Architected AWS S3/Glue pipelines (−18% missing values), optimized 10M+ records with vectorized Pandas, and tuned Scikit-Learn classifiers to a 0.94 F1-score.',
+  },
+  {
     kind: 'education',
-    period: '2018 — 2022',
-    title: 'B.Tech Computer Science',
-    org: 'Placeholder University',
-    summary: 'Foundations in algorithms, databases, and software engineering.',
+    period: '2020 — 2024',
+    title: 'B.E. Computer Engineering',
+    org: 'Gujarat Technological University · Ahmedabad, India',
+    summary: 'GPA 3.70. Foundations in algorithms, systems, and software engineering.',
   },
 ];

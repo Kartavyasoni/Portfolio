@@ -1,19 +1,21 @@
 /**
  * "Strengths" section — animated metric cards + qualitative pillars.
- * Metrics use a count-up animation on scroll; keep values honest/placeholder.
+ * Metrics use a count-up animation on scroll. Values are drawn from real
+ * resume outcomes; `decimals` controls count-up precision.
  */
 export type Metric = {
   value: number;
   suffix?: string;
   prefix?: string;
   label: string;
+  decimals?: number;
 };
 
 export const metrics: Metric[] = [
-  { value: 15, suffix: '+', label: 'Production data pipelines shipped' },
-  { value: 8, suffix: 'TB', label: 'Data processed per day at peak' },
-  { value: 99.9, suffix: '%', label: 'Pipeline uptime maintained' },
-  { value: 12, suffix: '+', label: 'ML models deployed to production' },
+  { value: 40, suffix: '%', label: 'Fewer production ML incidents (observability)' },
+  { value: 60, suffix: '%', label: 'Pipeline latency cut via caching' },
+  { value: 0.94, decimals: 2, label: 'Best model F1-score on imbalanced data' },
+  { value: 10, suffix: 'M+', label: 'Records engineered & optimized' },
 ];
 
 export type Pillar = {
@@ -23,23 +25,23 @@ export type Pillar = {
 
 export const pillars: Pillar[] = [
   {
-    title: 'Data + AI, combined',
+    title: 'Data + ML, end to end',
     description:
-      'I sit at the seam between data engineering and ML — building the pipelines that feed models and the models that justify the pipelines.',
+      'From AWS S3/Glue and FastAPI ETL pipelines to trained, deployed models — I own the full lifecycle, not just the modeling step.',
   },
   {
-    title: 'Production-focused mindset',
+    title: 'Production & MLOps mindset',
     description:
-      'Notebooks are a starting point, not a deliverable. I optimize for reliability, observability, and cost in real systems.',
+      'Data observability, model versioning, and A/B evaluation gates. I build models that survive production, not just notebooks that demo well.',
   },
   {
-    title: 'Full-stack data systems',
+    title: 'Explainable, trustworthy models',
     description:
-      'From ingestion to API to dashboard — I can own a data product end to end without handoffs falling through the cracks.',
+      'SHAP reason codes, VIF analysis, and calibrated thresholds — I make models interpretable and defensible, not just accurate.',
   },
   {
-    title: 'Scalable by design',
+    title: 'Strong CS foundation',
     description:
-      'A CS Master’s foundation means I reason about complexity, distributed systems, and trade-offs before they become incidents.',
+      'An M.S. in Computer Science (3.96 GPA) at Florida Atlantic University, backed by a track record of measurable, quantified impact.',
   },
 ];

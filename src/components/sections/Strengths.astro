@@ -22,7 +22,7 @@ import { metrics, pillars } from '@/data/strengths';
                 data-countup-value={m.value}
                 data-countup-prefix={m.prefix ?? ''}
                 data-countup-suffix={m.suffix ?? ''}
-                data-countup-decimals={String(m.value % 1 !== 0 ? 1 : 0)}
+                data-countup-decimals={String(m.decimals ?? (Number.isInteger(m.value) ? 0 : 1))}
               >
                 {m.prefix ?? ''}0{m.suffix ?? ''}
               </span>

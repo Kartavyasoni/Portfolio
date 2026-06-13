@@ -1,0 +1,54 @@
+---
+title: 'Loan Meter: Financial Risk Engine'
+description: An explainable credit-risk model that predicts loan default on highly imbalanced data and returns regulator-friendly reason codes for every decision.
+category: Machine Learning
+tags: [classification, explainability, etl, risk]
+techStack: [XGBoost, Python, Pandas, SHAP, Bayesian Optimization]
+problem: >
+  Lenders need to predict default risk on heavily imbalanced data (roughly 10
+  good loans per bad one) while staying transparent — a black-box score that
+  can't explain a denial is a regulatory and trust problem.
+solution: >
+  I built a credit-risk engine: a Pandas ETL pipeline that cleans 200k+ records,
+  an XGBoost classifier tuned with Bayesian search and cost-sensitive learning
+  for the imbalance, and SHAP-based reason codes that explain every individual
+  decision.
+architecture: >
+  Pandas ETL on 200k+ records (automated outlier detection + missing-data
+  handling) → engineered feature pipeline → XGBoost tuned via Bayesian
+  hyperparameter search → cost-sensitive learning to counter the 10:1 class
+  imbalance → SHAP reason codes attached to each prediction.
+results:
+  - Achieved 0.76 ROC-AUC while prioritizing precision on approvals
+  - Improved minority-class (default) recall by 14% with cost-sensitive learning
+  - Automated outlier detection and missing-data handling across 200k+ records
+  - Delivered SHAP reason codes for every denial, supporting regulatory alignment
+github: https://github.com/Kartavyasoni
+featured: true
+order: 2
+publishedAt: 2025-02-01
+---
+
+## Overview
+
+Loan Meter is a credit-risk model designed for the real world: imbalanced data,
+a hard precision requirement, and a regulatory need to **explain every
+decision** — not just produce a score.
+
+## Handling imbalance honestly
+
+With a ~10:1 class imbalance, naive accuracy is meaningless. I used
+**cost-sensitive learning** to make the model pay attention to the rare default
+class, lifting minority-class recall by 14% without collapsing precision.
+
+## Tuning for the right metric
+
+The XGBoost classifier was tuned with **Bayesian hyperparameter search** toward
+ROC-AUC and precision on approvals — reaching 0.76 ROC-AUC while keeping
+false approvals low.
+
+## Explainability as a requirement
+
+Every prediction carries **SHAP reason codes** — *"income-to-debt ratio,
+recent delinquencies"* — so a denial can be explained to an applicant and a
+regulator. Transparency was a design constraint, not an afterthought.

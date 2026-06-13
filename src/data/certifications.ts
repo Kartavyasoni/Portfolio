@@ -11,23 +11,13 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
-    name: 'Data Engineering Professional',
-    issuer: 'Placeholder Cloud Academy',
-    year: '2025',
+    name: 'Google Advanced Data Analytics Professional Certificate',
+    issuer: 'Google',
+    year: '2026',
   },
   {
-    name: 'Machine Learning Specialization',
-    issuer: 'Placeholder University (Coursera)',
-    year: '2024',
-  },
-  {
-    name: 'Apache Spark Developer',
-    issuer: 'Placeholder Databricks',
-    year: '2024',
-  },
-  {
-    name: 'Deep Learning Specialization',
-    issuer: 'Placeholder DeepLearning.AI',
-    year: '2023',
+    name: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services',
+    year: '2026',
   },
 ];

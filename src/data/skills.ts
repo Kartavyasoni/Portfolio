@@ -1,6 +1,6 @@
 /**
  * Grouped skill set for the About page.
- * `level` (0–100) drives the animated proficiency bar; keep honest/placeholder.
+ * `level` (0–100) drives the animated proficiency bar (self-assessed).
  */
 export type Skill = { name: string; level: number };
 
@@ -12,47 +12,47 @@ export type SkillGroup = {
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: 'Data Engineering',
-    caption: 'Moving and shaping data reliably at scale.',
+    title: 'Languages & Core',
+    caption: 'The core toolkit for wrangling and modeling data.',
     skills: [
-      { name: 'Python', level: 92 },
-      { name: 'SQL', level: 90 },
-      { name: 'PySpark', level: 85 },
-      { name: 'Airflow', level: 80 },
-      { name: 'Kafka', level: 75 },
-      { name: 'dbt', level: 78 },
+      { name: 'Python', level: 95 },
+      { name: 'Advanced SQL', level: 90 },
+      { name: 'Pandas / NumPy', level: 92 },
+      { name: 'Scikit-Learn', level: 90 },
+      { name: 'PySpark', level: 78 },
     ],
   },
   {
-    title: 'AI / Machine Learning',
-    caption: 'Training and shipping models that hold up in production.',
+    title: 'Machine Learning',
+    caption: 'Supervised learning, forecasting, and statistics.',
     skills: [
-      { name: 'PyTorch', level: 84 },
-      { name: 'scikit-learn', level: 88 },
-      { name: 'Deep Learning', level: 80 },
-      { name: 'Transformers / LLMs', level: 78 },
-      { name: 'Reinforcement Learning', level: 68 },
+      { name: 'XGBoost', level: 88 },
+      { name: 'Random Forest', level: 85 },
+      { name: 'Time-Series (ARIMA)', level: 80 },
+      { name: 'Clustering (K-Means, PCA)', level: 82 },
+      { name: 'A/B & Hypothesis Testing', level: 80 },
+    ],
+  },
+  {
+    title: 'MLOps & Cloud',
+    caption: 'Shipping and operating models reliably in the cloud.',
+    skills: [
+      { name: 'AWS (S3, Glue, SageMaker)', level: 82 },
+      { name: 'Docker', level: 80 },
+      { name: 'Git / GitHub Actions', level: 85 },
+      { name: 'CI/CD Pipelines', level: 78 },
       { name: 'MLflow', level: 75 },
     ],
   },
   {
-    title: 'Data Science',
-    caption: 'Turning data into analysis, insight, and visualization.',
+    title: 'Systems & Visualization',
+    caption: 'APIs, databases, and the dashboards that surface insight.',
     skills: [
-      { name: 'Pandas / NumPy', level: 90 },
-      { name: 'Statistics', level: 82 },
-      { name: 'Visualization', level: 84 },
-      { name: 'A/B Testing', level: 76 },
-    ],
-  },
-  {
-    title: 'Full-Stack Systems',
-    caption: 'APIs, services, databases, and the UIs that surface them.',
-    skills: [
-      { name: 'FastAPI', level: 86 },
-      { name: 'TypeScript / React', level: 80 },
-      { name: 'PostgreSQL', level: 85 },
-      { name: 'Docker / K8s', level: 74 },
+      { name: 'FastAPI', level: 85 },
+      { name: 'PostgreSQL', level: 82 },
+      { name: 'MongoDB', level: 75 },
+      { name: 'Tableau', level: 78 },
+      { name: 'Streamlit', level: 84 },
     ],
   },
 ];

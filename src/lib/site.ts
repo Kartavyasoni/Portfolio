@@ -7,15 +7,15 @@ export const site = {
   name: 'Kartavya Soni',
   // Short brand mark used in the nav / logo.
   brand: 'KS',
-  role: 'Data Engineer · AI/ML',
+  role: 'Data Scientist · ML Engineer',
   headline: 'Transforming Raw Data into Production-Ready Intelligence',
   subheadline:
-    'Computer Science Master’s graduate specializing in Data Engineering, AI, Machine Learning, and Full-Stack Data Systems.',
+    'Computer Science Master’s graduate (Florida Atlantic University) specializing in Machine Learning, MLOps, and data pipelines — turning messy data into deployed, explainable models.',
   description:
-    'Personal portfolio of Kartavya Soni — Data Engineer and AI/ML practitioner building production-grade intelligent systems, from ETL pipelines to deployed machine learning.',
+    'Personal portfolio of Kartavya Soni — Data Scientist and Machine Learning Engineer building production-grade ML systems, from AWS data pipelines to deployed, explainable models.',
   url: 'https://kartavyasoni.vercel.app',
   email: 'sonikartavya2003@outlook.com',
-  location: 'Erlangen, Germany',
+  location: 'Florida, USA',
 } as const;
 
 export type NavItem = {
@@ -41,7 +41,7 @@ export const socials: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/Kartavyasoni', icon: 'github' },
   {
     label: 'LinkedIn',
-    // TODO: replace with the real LinkedIn URL.
+    // TODO: confirm the exact LinkedIn URL (this is a best guess).
     href: 'https://www.linkedin.com/in/kartavya-soni',
     icon: 'linkedin',
   },

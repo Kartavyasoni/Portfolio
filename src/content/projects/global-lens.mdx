@@ -1,0 +1,54 @@
+---
+title: 'Global Lens: A Clearer View of Global Progress'
+description: An analytics platform that ingests 16k+ global development indicators and turns them into country clusters, GDP forecasts, and interactive what-if scenarios.
+category: Data Science
+tags: [forecasting, clustering, etl, dashboard]
+techStack: [Scikit-Learn, FastAPI, Streamlit, ARIMA, Pandas, Docker]
+problem: >
+  Global development data is scattered across thousands of indicators and
+  sources, making it slow and painful to compare countries, spot economic
+  patterns, or project where a country is heading.
+solution: >
+  I built an end-to-end analytics platform: a FastAPI ETL pipeline that ingests
+  16k+ indicators behind a caching layer, an unsupervised engine that segments
+  countries into economic archetypes, ARIMA models that forecast GDP, and a
+  Streamlit dashboard for interactive exploration.
+architecture: >
+  FastAPI ETL ingests 16k+ indicators → caching layer cuts repeat latency by
+  60% → PCA + K-Means segment countries into 5 economic archetypes → ARIMA
+  models with rolling-window cross-validation forecast GDP → a Dockerized
+  Streamlit dashboard serves clusters, forecasts, and live "What-If" scenarios.
+results:
+  - Reduced data-access latency by 60% with a caching layer over the ETL pipeline
+  - Identified 5 distinct global economic archetypes via PCA + K-Means
+  - Improved GDP forecast accuracy (MAPE) by 12% with rolling-window validation
+  - Shipped a Dockerized dashboard enabling real-time "What-If" scenario analysis
+github: https://github.com/Kartavyasoni
+featured: true
+order: 1
+publishedAt: 2025-04-01
+---
+
+## Overview
+
+Global Lens turns an overwhelming, fragmented dataset into something a person
+can actually reason about — clusters that group similar economies, forecasts
+that project where they're heading, and a dashboard to ask "what if?".
+
+## From raw indicators to insight
+
+The hardest part wasn't the modeling — it was the **data plumbing**. A FastAPI
+ETL pipeline ingests 16k+ indicators, and a caching layer cut repeat-query
+latency by 60%, which made interactive exploration feel instant.
+
+## Segmentation & forecasting
+
+- **PCA + K-Means** reduced dozens of correlated indicators into a handful of
+  components and grouped countries into 5 interpretable economic archetypes.
+- **ARIMA** models, validated with rolling-window cross-validation, improved GDP
+  forecast accuracy (MAPE) by 12% over a naive baseline.
+
+## Delivery
+
+The whole thing ships as a **Dockerized Streamlit app**, so analysts can run
+live "What-If" scenarios on the global clusters without touching a notebook.
