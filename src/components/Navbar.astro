@@ -1,0 +1,127 @@
+---
+import { navItems, site, socials } from '@/lib/site';
+import ThemeToggle from '@/components/ThemeToggle.astro';
+import Icon from '@/components/ui/Icon.astro';
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<header
+  id="navbar"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+  data-scrolled="false"
+>
+  <nav class="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
+    <!-- Brand -->
+    <a
+      href="/"
+      class="group flex items-center gap-2.5 font-display text-base font-semibold tracking-tight"
+      aria-label={`${site.name} — home`}
+    >
+      <span
+        class="grid size-8 place-items-center rounded-lg border border-accent/30 bg-accent/10 font-mono text-sm text-accent transition-all group-hover:border-accent/60 group-hover:shadow-[0_0_20px_-4px_var(--glow)]"
+      >
+        {site.brand}
+      </span>
+      <span class="hidden sm:inline">{site.name}</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div
+      class="glass absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-full px-2 py-1.5 md:flex"
+    >
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'rounded-full px-4 py-1.5 text-sm transition-colors',
+              isActive(item.href)
+                ? 'bg-surface-3 text-text'
+                : 'text-muted hover:text-text',
+            ]}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Right cluster -->
+    <div class="flex items-center gap-2">
+      <a
+        href={socials[0].href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="hidden size-9 place-items-center rounded-lg border border-border bg-surface-2 text-muted transition-colors hover:border-border-strong hover:text-text sm:grid"
+      >
+        <Icon name="github" class="size-4" />
+      </a>
+      <ThemeToggle />
+      <button
+        type="button"
+        id="menu-toggle"
+        class="grid size-9 place-items-center rounded-lg border border-border bg-surface-2 text-muted transition-colors hover:text-text md:hidden"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Icon name="menu" class="size-4" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="glass hidden border-t border-border md:hidden"
+  >
+    <div class="flex flex-col gap-1 px-5 py-4">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class:list={[
+              'rounded-lg px-4 py-3 text-sm transition-colors',
+              isActive(item.href)
+                ? 'bg-surface-3 text-text'
+                : 'text-muted hover:bg-surface-2 hover:text-text',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>
+
+<script>
+  // Solidify the navbar background after scrolling past the hero fold.
+  const navbar = document.getElementById('navbar');
+  const onScroll = () => {
+    navbar?.setAttribute('data-scrolled', String(window.scrollY > 24));
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile menu toggle.
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle?.addEventListener('click', () => {
+    const open = mobileMenu?.classList.toggle('hidden') === false;
+    menuToggle.setAttribute('aria-expanded', String(open));
+  });
+</script>
+
+<style>
+  #navbar[data-scrolled='true'] nav {
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+</style>

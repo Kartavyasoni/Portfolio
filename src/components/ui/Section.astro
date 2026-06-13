@@ -1,0 +1,45 @@
+---
+import Container from '@/components/ui/Container.astro';
+
+interface Props {
+  id?: string;
+  /** Kicker label (mono eyebrow) above the heading. */
+  kicker?: string;
+  title?: string;
+  /** Supporting copy under the heading. */
+  intro?: string;
+  align?: 'left' | 'center';
+  container?: 'default' | 'narrow' | 'wide';
+  class?: string;
+}
+
+const {
+  id,
+  kicker,
+  title,
+  intro,
+  align = 'left',
+  container = 'default',
+  class: className,
+} = Astro.props;
+
+const hasHeader = kicker || title || intro;
+const alignCls = align === 'center' ? 'text-center mx-auto items-center' : '';
+---
+
+<section id={id} class={`relative py-20 sm:py-28 ${className ?? ''}`}>
+  <Container size={container}>
+    {
+      hasHeader && (
+        <header class={`flex max-w-2xl flex-col gap-4 ${alignCls}`} data-reveal>
+          {kicker && <span class="kicker">{kicker}</span>}
+          {title && (
+            <h2 class="text-3xl font-semibold sm:text-4xl md:text-5xl">{title}</h2>
+          )}
+          {intro && <p class="text-balance text-base text-muted sm:text-lg">{intro}</p>}
+        </header>
+      )
+    }
+    <slot />
+  </Container>
+</section>

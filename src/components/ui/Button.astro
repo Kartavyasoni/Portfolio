@@ -1,0 +1,55 @@
+---
+import Icon from '@/components/ui/Icon.astro';
+
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  icon?: 'arrowRight' | 'arrowUpRight' | 'external' | 'github';
+  type?: 'button' | 'submit';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  icon,
+  type = 'button',
+  class: className,
+  ...rest
+} = Astro.props;
+
+const base =
+  'group/btn relative inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-300 ease-[var(--ease-out-expo)] focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-50 disabled:pointer-events-none';
+
+const sizes = {
+  sm: 'h-9 px-4 text-sm',
+  md: 'h-11 px-5 text-sm',
+  lg: 'h-13 px-7 text-base',
+};
+
+const variants = {
+  primary:
+    'bg-accent text-accent-contrast shadow-[0_8px_30px_-8px_var(--glow)] hover:bg-accent-hover hover:shadow-[0_10px_40px_-6px_var(--glow)] hover:-translate-y-0.5',
+  secondary:
+    'border border-border-strong bg-surface-2/60 text-text backdrop-blur hover:border-accent/50 hover:bg-surface-3 hover:-translate-y-0.5',
+  ghost: 'text-muted hover:text-text hover:bg-surface-2',
+};
+
+const cls = [base, sizes[size], variants[variant], className].filter(Boolean).join(' ');
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag class={cls} href={href} type={href ? undefined : type} {...rest}>
+  <slot />
+  {
+    icon && (
+      <Icon
+        name={icon}
+        class="size-4 transition-transform duration-300 group-hover/btn:translate-x-0.5"
+      />
+    )
+  }
+</Tag>
