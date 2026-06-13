@@ -45,7 +45,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,14 +74,10 @@ const jsonLd = {
     <meta name="theme-color" content="#05070a" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#f7f9fc" media="(prefers-color-scheme: light)" />
 
-    <!-- No-FOUC theme init + JS flag: runs before first paint -->
+    <!-- Dark-only site (light-theme tokens remain in CSS for easy re-enable). -->
     <script is:inline>
       (() => {
-        const stored = localStorage.getItem('theme');
-        const system = matchMedia('(prefers-color-scheme: light)').matches
-          ? 'light'
-          : 'dark';
-        document.documentElement.dataset.theme = stored ?? system;
+        document.documentElement.dataset.theme = 'dark';
         // Marks JS-enabled so scroll-reveal targets can start hidden (no flash).
         document.documentElement.classList.add('js');
       })();

@@ -16,6 +16,8 @@ export const site = {
   url: 'https://kartavyasoni.vercel.app',
   email: 'sonikartavya2003@outlook.com',
   location: 'Florida, USA',
+  // Served from /public — update this path if you rename the file.
+  resume: '/Kartavya_Soni_Resume.pdf',
 } as const;
 
 export type NavItem = {
