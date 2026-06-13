@@ -41,8 +41,7 @@ export const socials: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/Kartavyasoni', icon: 'github' },
   {
     label: 'LinkedIn',
-    // TODO: confirm the exact LinkedIn URL (this is a best guess).
-    href: 'https://www.linkedin.com/in/kartavya-soni',
+    href: 'https://www.linkedin.com/in/kartavyasoni8/',
     icon: 'linkedin',
   },
   { label: 'Email', href: `mailto:${site.email}`, icon: 'email' },
