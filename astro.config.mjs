@@ -52,7 +52,7 @@ export default defineConfig({
         context: 'server',
         access: 'secret',
         optional: true,
-        default: 'sonikartavya8@gmail.com',
+        default: 'sonikartavya2003@outlook.com',
       }),
     },
   },
