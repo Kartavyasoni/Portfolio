@@ -1,68 +1,16 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Container from '@/components/ui/Container.astro';
-import Section from '@/components/ui/Section.astro';
-import Button from '@/components/ui/Button.astro';
-import GlowCard from '@/components/ui/GlowCard.astro';
-import Badge from '@/components/ui/Badge.astro';
-import { site } from '@/lib/site';
-
-// Temporary stand-ins — replaced by real data + 3D hero in Stage 2/3.
-const expertise = [
-  'Data Engineering',
-  'Machine Learning',
-  'Artificial Intelligence',
-  'Data Science',
-  'Databases',
-  'Full-Stack Systems',
-];
+import Hero from '@/components/sections/Hero.astro';
+import Expertise from '@/components/sections/Expertise.astro';
+import FeaturedProjects from '@/components/sections/FeaturedProjects.astro';
+import Strengths from '@/components/sections/Strengths.astro';
+import TimelinePreview from '@/components/sections/TimelinePreview.astro';
 ---
 
 <Layout>
-  <!-- HERO (placeholder — 3D background lands in Stage 2) -->
-  <section class="relative flex min-h-screen items-center overflow-hidden">
-    <div class="bg-grid pointer-events-none absolute inset-0 opacity-60"></div>
-    <div
-      class="glow-halo pointer-events-none absolute -top-1/4 left-1/2 size-[70vw] max-w-3xl -translate-x-1/2 opacity-50"
-    >
-    </div>
-
-    <Container class="relative pt-24">
-      <div class="max-w-3xl">
-        <span class="kicker">{site.role} · {site.location}</span>
-        <h1 class="mt-5 text-4xl font-semibold leading-[1.05] sm:text-6xl md:text-7xl">
-          Transforming Raw Data into
-          <span class="text-gradient">Production-Ready Intelligence</span>
-        </h1>
-        <p class="mt-6 max-w-xl text-lg text-muted">
-          {site.subheadline}
-        </p>
-        <div class="mt-9 flex flex-wrap gap-3">
-          <Button href="/projects" size="lg" icon="arrowRight">View Projects</Button>
-          <Button href="/about" variant="secondary" size="lg">Know More About Me</Button>
-        </div>
-      </div>
-    </Container>
-  </section>
-
-  <!-- EXPERTISE (placeholder grid to demo the design system) -->
-  <Section
-    kicker="Core Domains"
-    title="Featured Expertise"
-    intro="A full-stack data skill set — from raw ingestion to deployed intelligence."
-  >
-    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
-      {
-        expertise.map((item, i) => (
-          <GlowCard>
-            <Badge variant="accent">0{i + 1}</Badge>
-            <h3 class="mt-4 text-xl font-semibold">{item}</h3>
-            <p class="mt-2 text-sm text-muted">
-              Placeholder copy — replaced with real capability summaries in Stage 2.
-            </p>
-          </GlowCard>
-        ))
-      }
-    </div>
-  </Section>
+  <Hero />
+  <Expertise />
+  <FeaturedProjects />
+  <Strengths />
+  <TimelinePreview />
 </Layout>

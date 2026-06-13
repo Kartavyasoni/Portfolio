@@ -1,0 +1,198 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import Section from '@/components/ui/Section.astro';
+import GlowCard from '@/components/ui/GlowCard.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import SkillsSection from '@/components/sections/about/SkillsSection.astro';
+import ExperienceTimeline from '@/components/sections/about/ExperienceTimeline.astro';
+import { timeline } from '@/data/timeline';
+import { certifications } from '@/data/certifications';
+import { site } from '@/lib/site';
+
+const leadership = timeline.filter((e) => e.kind === 'leadership');
+
+const philosophy = [
+  {
+    title: 'Production over prototypes',
+    body: 'A model in a notebook is a hypothesis. I optimize for the version that runs reliably, observably, and affordably in production.',
+  },
+  {
+    title: 'Reliability is a feature',
+    body: 'Pipelines should fail loudly and recover gracefully. Observability, tests, and idempotency are not optional extras.',
+  },
+  {
+    title: 'Simple, then scalable',
+    body: 'I reach for the simplest design that solves the problem, and only add complexity when the data and load actually demand it.',
+  },
+];
+---
+
+<Layout
+  title="About"
+  description="The story, education, philosophy, skills, and experience behind a production-focused Data & AI engineer."
+>
+  <PageHero
+    kicker="About Me"
+    title="Engineering intelligence from the data up"
+    intro="I’m a Computer Science Master’s graduate who lives at the seam between data engineering and machine learning — building the pipelines that feed models and the models that justify the pipelines."
+  >
+    <div class="mt-8 flex flex-wrap gap-3" data-hero-item>
+      <Button href="/projects" icon="arrowRight">See the work</Button>
+      <Button href="/contact" variant="secondary">Get in touch</Button>
+    </div>
+  </PageHero>
+
+  <!-- Story + Education -->
+  <Section container="default">
+    <div class="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+      <div data-reveal class="flex flex-col gap-5 text-base leading-relaxed text-muted">
+        <span class="kicker">The Story</span>
+        <p>
+          My path into data started with a simple frustration: the most
+          interesting questions were always blocked by messy, unreliable data.
+          So I went upstream — learning to build the systems that make data
+          trustworthy in the first place.
+        </p>
+        <p>
+          A Computer Science Master’s sharpened that instinct into engineering
+          discipline. I came to love the full arc of a data product: ingesting
+          raw events, shaping them into clean models, training intelligence on
+          top, and serving it back as something people can actually use.
+        </p>
+        <p>
+          Today I focus on <span class="text-text">production-grade data and AI systems</span> —
+          the unglamorous reliability work that turns a clever idea into a
+          dependable service.
+        </p>
+      </div>
+
+      <div data-reveal>
+        <GlowCard class="h-full">
+          <Badge variant="accent">Education</Badge>
+          <h3 class="mt-4 text-xl font-semibold">M.Sc. Computer Science</h3>
+          <p class="mt-1 text-sm text-muted">
+            Friedrich-Alexander-Universität (FAU)
+          </p>
+          <p class="mt-4 text-sm leading-relaxed text-muted">
+            Specialized in data systems, machine learning, and distributed
+            computing — with a thesis-level focus on building things that scale.
+          </p>
+          <dl class="mt-6 grid grid-cols-2 gap-4 border-t border-border pt-6">
+            <div>
+              <dt class="font-mono text-xs text-faint">Focus</dt>
+              <dd class="mt-1 text-sm text-text">Data + AI Systems</dd>
+            </div>
+            <div>
+              <dt class="font-mono text-xs text-faint">Based in</dt>
+              <dd class="mt-1 text-sm text-text">{site.location}</dd>
+            </div>
+          </dl>
+        </GlowCard>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Technical philosophy -->
+  <Section
+    kicker="How I Work"
+    title="Technical philosophy"
+    intro="A few principles that shape how I build."
+  >
+    <div class="mt-12 grid gap-4 md:grid-cols-3">
+      {
+        philosophy.map((p, i) => (
+          <div data-reveal>
+            <GlowCard class="h-full">
+              <span class="font-mono text-sm text-accent">0{i + 1}</span>
+              <h3 class="mt-3 text-lg font-semibold">{p.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted">{p.body}</p>
+            </GlowCard>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <SkillsSection />
+
+  <ExperienceTimeline />
+
+  <!-- Leadership -->
+  {
+    leadership.length > 0 && (
+      <Section
+        kicker="Leadership"
+        title="Beyond the code"
+        intro="Mentoring, community, and student leadership."
+      >
+        <div class="mt-12 grid gap-4 md:grid-cols-2">
+          {leadership.map((l) => (
+            <div data-reveal>
+              <GlowCard class="h-full">
+                <div class="flex items-center gap-3">
+                  <span class="grid size-10 place-items-center rounded-lg border border-border bg-surface-3 text-violet-400">
+                    <Icon name="arrowUpRight" class="size-5" />
+                  </span>
+                  <span class="font-mono text-xs text-faint">{l.period}</span>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold">{l.title}</h3>
+                <p class="text-sm text-muted">{l.org}</p>
+                <p class="mt-2 text-sm leading-relaxed text-muted">{l.summary}</p>
+              </GlowCard>
+            </div>
+          ))}
+        </div>
+      </Section>
+    )
+  }
+
+  <!-- Certifications -->
+  <Section
+    kicker="Credentials"
+    title="Certifications"
+    intro="Continued learning, verified."
+  >
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        certifications.map((cert) => (
+          <div data-reveal>
+            <GlowCard
+              href={cert.credentialUrl}
+              class="h-full"
+            >
+              <div class="flex items-start justify-between">
+                <span class="grid size-10 place-items-center rounded-lg border border-accent/30 bg-accent/10 font-mono text-xs text-accent">
+                  {cert.year}
+                </span>
+                {cert.credentialUrl && (
+                  <Icon name="external" class="size-4 text-faint" />
+                )}
+              </div>
+              <h3 class="mt-4 text-base font-semibold leading-snug">{cert.name}</h3>
+              <p class="mt-1 text-sm text-muted">{cert.issuer}</p>
+            </GlowCard>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section container="narrow">
+    <div data-reveal>
+      <GlowCard class="text-center" noLift>
+        <h2 class="text-2xl font-semibold sm:text-3xl">Let’s build something intelligent</h2>
+        <p class="mx-auto mt-3 max-w-lg text-muted">
+          I’m open to roles and collaborations in data engineering and applied AI.
+        </p>
+        <div class="mt-7 flex flex-wrap justify-center gap-3">
+          <Button href="/contact" size="lg" icon="arrowRight">Get in touch</Button>
+          <Button href="/projects" variant="secondary" size="lg">View projects</Button>
+        </div>
+      </GlowCard>
+    </div>
+  </Section>
+</Layout>

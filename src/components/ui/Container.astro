@@ -5,9 +5,9 @@ interface Props {
   as?: string;
 }
 
-const { size = 'default', class: className, as = 'div' } = Astro.props;
+const { size = 'default', class: className, as = 'div' } = Astro.props as Props;
 
-const sizes = {
+const sizes: Record<NonNullable<Props['size']>, string> = {
   narrow: 'max-w-3xl',
   default: 'max-w-6xl',
   wide: 'max-w-7xl',

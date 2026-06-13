@@ -1,0 +1,63 @@
+---
+import GlowCard from '@/components/ui/GlowCard.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Icon from '@/components/ui/Icon.astro';
+import { categoryAccent, accentGradient, type Project } from '@/lib/projects';
+
+interface Props {
+  project: Project;
+  class?: string;
+}
+
+const { project, class: className } = Astro.props;
+const { title, description, category, techStack } = project.data;
+const accent = categoryAccent[category] ?? 'blue';
+---
+
+<GlowCard href={`/projects/${project.id}`} class={`h-full ${className ?? ''}`} noLift>
+  <!-- Schematic preview (placeholder until real thumbnails exist) -->
+  <div class="relative -mx-6 -mt-6 mb-6 h-44 overflow-hidden border-b border-border">
+    <div class={`absolute inset-0 bg-gradient-to-br ${accentGradient[accent]}`}></div>
+    <div class="bg-grid absolute inset-0 opacity-40"></div>
+    <svg
+      class="absolute inset-0 h-full w-full text-accent/70"
+      viewBox="0 0 400 180"
+      fill="none"
+      stroke="currentColor"
+    >
+      <path d="M40 90h70M150 90h70M290 90h70" stroke-width="1.5" stroke-dasharray="4 6">
+        <animate
+          attributeName="stroke-dashoffset"
+          from="20"
+          to="0"
+          dur="1.2s"
+          repeatCount="indefinite"></animate>
+      </path>
+      <rect x="110" y="70" width="40" height="40" rx="8" stroke-width="1.5"></rect>
+      <rect x="220" y="70" width="40" height="40" rx="8" stroke-width="1.5"></rect>
+      <circle cx="40" cy="90" r="6" fill="currentColor"></circle>
+      <circle cx="360" cy="90" r="6" fill="currentColor"></circle>
+    </svg>
+  </div>
+
+  <div class="flex items-center justify-between gap-3">
+    <Badge variant="accent">{category}</Badge>
+    <Icon
+      name="arrowUpRight"
+      class="size-4 text-faint transition-all duration-300 group-hover/glow:-translate-y-0.5 group-hover/glow:translate-x-0.5 group-hover/glow:text-accent"
+    />
+  </div>
+  <h3 class="mt-4 text-xl font-semibold transition-colors group-hover/glow:text-accent">
+    {title}
+  </h3>
+  <p class="mt-2 text-sm leading-relaxed text-muted">{description}</p>
+  <ul class="mt-5 flex flex-wrap gap-1.5">
+    {
+      techStack.slice(0, 5).map((t) => (
+        <li class="rounded-md border border-border px-2 py-1 font-mono text-[11px] text-faint">
+          {t}
+        </li>
+      ))
+    }
+  </ul>
+</GlowCard>

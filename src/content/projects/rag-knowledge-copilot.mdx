@@ -1,0 +1,46 @@
+---
+title: RAG Knowledge Copilot
+description: A retrieval-augmented assistant over internal docs with vector search, reranking, and grounded citations.
+category: AI
+tags: [llm, rag, vector-search, nlp]
+techStack: [LangChain, pgvector, Transformers, FastAPI, Next.js, Redis]
+problem: >
+  Institutional knowledge was scattered across wikis, PDFs, and chat history.
+  People re-asked the same questions, and a naive LLM hallucinated confident but
+  wrong answers with no sources.
+solution: >
+  I built a retrieval-augmented copilot that chunks and embeds the corpus,
+  retrieves and reranks the most relevant passages, and constrains the model to
+  answer only from retrieved context — every answer carries citations back to
+  the source document.
+architecture: >
+  Ingestion: documents → semantic chunking → embeddings in pgvector. Query:
+  hybrid (keyword + vector) retrieval → cross-encoder reranking → grounded
+  prompt → LLM → answer with citations. Redis caches embeddings and frequent
+  queries; FastAPI serves a streaming Next.js chat UI.
+results:
+  - Grounded answers with citations cut hallucinated responses dramatically
+  - Median answer time under 1.5s with caching and reranking
+  - Reduced repetitive internal questions, freeing senior engineers' time
+github: https://github.com/Kartavyasoni
+featured: true
+order: 3
+publishedAt: 2024-11-20
+---
+
+## Overview
+
+The system treats the LLM as a **reasoning layer over retrieved evidence**, not
+a source of truth. If the corpus doesn't support an answer, the copilot says so
+instead of inventing one.
+
+## Retrieval quality
+
+Hybrid retrieval plus a cross-encoder reranker mattered far more than the choice
+of base model. Good context in, good answer out.
+
+## Guardrails
+
+- Answers are constrained to retrieved passages and always cite sources.
+- Low-confidence retrievals trigger a graceful "I don't have that" response.
+- Per-document access controls are enforced at retrieval time.

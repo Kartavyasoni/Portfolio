@@ -1,0 +1,31 @@
+---
+import Section from '@/components/ui/Section.astro';
+import Button from '@/components/ui/Button.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import { getFeaturedProjects } from '@/lib/projects';
+
+const projects = await getFeaturedProjects(4);
+---
+
+<Section
+  id="projects"
+  kicker="Selected Work"
+  title="Featured Projects"
+  intro="A case-study look at systems built to run in production, not just in notebooks."
+>
+  <div class="mt-14 grid gap-5 md:grid-cols-2">
+    {
+      projects.map((project) => (
+        <div data-reveal>
+          <ProjectCard project={project} />
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-12 flex justify-center" data-reveal>
+    <Button href="/projects" variant="secondary" size="lg" icon="arrowRight">
+      View All Projects
+    </Button>
+  </div>
+</Section>

@@ -1,0 +1,45 @@
+---
+title: Pipeline Observability Suite
+description: Full-stack data-quality and lineage tooling that catches broken pipelines before stakeholders do.
+category: Full Stack
+tags: [data-quality, observability, lineage, full-stack]
+techStack: [dbt, Great Expectations, FastAPI, React, PostgreSQL, Docker]
+problem: >
+  Data quality issues were discovered by executives looking at wrong numbers in
+  a dashboard — the worst possible detector. There was no lineage, no freshness
+  monitoring, and no single place to see pipeline health.
+solution: >
+  I built an observability suite that runs expectation tests on every model,
+  tracks freshness and volume anomalies, captures column-level lineage, and
+  surfaces it all in a React control room with alerting.
+architecture: >
+  dbt + Great Expectations emit test and freshness results to a Postgres
+  metadata store. A FastAPI service exposes health, lineage, and anomaly
+  endpoints. A React dashboard renders the lineage graph and an incident feed;
+  failures page on-call before they reach stakeholders.
+results:
+  - Caught 90%+ of data incidents before any stakeholder noticed
+  - Column-level lineage cut root-cause analysis from hours to minutes
+  - Became the single pane of glass for pipeline health across the team
+github: https://github.com/Kartavyasoni
+featured: true
+order: 4
+publishedAt: 2024-09-10
+---
+
+## Overview
+
+This is the project that turns "the dashboard looks wrong" into "the suite
+already flagged it and opened an incident." It spans the full stack — from dbt
+tests to a React lineage graph.
+
+## Lineage as the backbone
+
+Column-level lineage answers the only question that matters during an incident:
+*what upstream change caused this, and what downstream depends on it?*
+
+## Design choices
+
+- Treat data tests as code, versioned alongside the models they validate.
+- Anomaly detection on freshness and row counts catches silent failures.
+- Alerts are actionable: they link straight to the failing model and its lineage.

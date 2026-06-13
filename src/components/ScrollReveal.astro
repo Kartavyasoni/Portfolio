@@ -1,0 +1,48 @@
+---
+/**
+ * Site-wide scroll reveal. Animates any [data-reveal] element into view on
+ * scroll using GSAP ScrollTrigger. Degrades gracefully: with reduced motion
+ * or if GSAP fails to load, all content is shown immediately.
+ */
+---
+
+<script>
+  const reveals = () =>
+    Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+
+  const showAll = () => reveals().forEach((el) => (el.style.opacity = '1'));
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReduced) {
+    showAll();
+  } else {
+    (async () => {
+      try {
+        const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+          import('gsap'),
+          import('gsap/ScrollTrigger'),
+        ]);
+        gsap.registerPlugin(ScrollTrigger);
+
+        reveals().forEach((el) => {
+          gsap.fromTo(
+            el,
+            { y: 32, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.85,
+              ease: 'power3.out',
+              scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+            },
+          );
+        });
+
+        ScrollTrigger.refresh();
+      } catch {
+        showAll();
+      }
+    })();
+  }
+</script>

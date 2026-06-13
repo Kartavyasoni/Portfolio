@@ -1,0 +1,43 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import Container from '@/components/ui/Container.astro';
+import ProjectsGallery, {
+  type ProjectCardData,
+} from '@/components/react/ProjectsGallery';
+import { getProjects } from '@/lib/projects';
+import { PROJECT_CATEGORIES } from '@/content.config';
+
+const projects = await getProjects();
+
+// Serialize to a plain, client-safe shape for the React island.
+const cards: ProjectCardData[] = projects.map((p) => ({
+  id: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  category: p.data.category,
+  tags: p.data.tags,
+  techStack: p.data.techStack,
+}));
+---
+
+<Layout
+  title="Projects"
+  description="A gallery of production-focused data engineering, machine learning, AI, and full-stack projects."
+>
+  <PageHero
+    kicker="Selected Work"
+    title="Projects"
+    intro="Systems built to run in production — filter by the kind of problem they solve."
+  />
+
+  <section class="pb-24">
+    <Container>
+      <ProjectsGallery
+        client:load
+        projects={cards}
+        categories={[...PROJECT_CATEGORIES]}
+      />
+    </Container>
+  </section>
+</Layout>

@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { site } from '@/lib/site';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
+import ScrollReveal from '@/components/ScrollReveal.astro';
 
 interface Props {
   title?: string;
@@ -25,6 +26,18 @@ const {
 const pageTitle = title ? `${title} · ${site.name}` : `${site.name} — ${site.role}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
 const ogImage = new URL(image, Astro.site ?? site.url).href;
+
+// Structured data — helps search engines understand who this site is about.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: 'Data Engineer · AI/ML',
+  email: `mailto:${site.email}`,
+  url: site.url,
+  description: site.description,
+  sameAs: ['https://github.com/Kartavyasoni'],
+};
 ---
 
 <!doctype html>
@@ -57,23 +70,33 @@ const ogImage = new URL(image, Astro.site ?? site.url).href;
     <meta name="theme-color" content="#05070a" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#f7f9fc" media="(prefers-color-scheme: light)" />
 
-    <!-- No-FOUC theme init: runs before first paint -->
+    <!-- No-FOUC theme init + JS flag: runs before first paint -->
     <script is:inline>
       (() => {
         const stored = localStorage.getItem('theme');
         const system = matchMedia('(prefers-color-scheme: light)').matches
           ? 'light'
           : 'dark';
-        const theme = stored ?? system;
-        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.theme = stored ?? system;
+        // Marks JS-enabled so scroll-reveal targets can start hidden (no flash).
+        document.documentElement.classList.add('js');
       })();
     </script>
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
   </head>
   <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:text-accent-contrast"
+    >
+      Skip to content
+    </a>
     {!bare && <Navbar />}
     <main id="main">
       <slot />
     </main>
     {!bare && <Footer />}
+    <ScrollReveal />
   </body>
 </html>

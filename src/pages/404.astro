@@ -1,0 +1,29 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+---
+
+<Layout title="404 — Not Found" noindex>
+  <section class="relative flex min-h-[80svh] items-center overflow-hidden">
+    <div class="bg-grid pointer-events-none absolute inset-0 opacity-40"></div>
+    <div
+      class="glow-halo pointer-events-none absolute left-1/2 top-1/3 size-[40vw] max-w-lg -translate-x-1/2 opacity-40"
+    >
+    </div>
+    <Container class="relative text-center">
+      <p class="font-mono text-sm tracking-[0.3em] text-accent">ERROR · 404</p>
+      <h1 class="mt-6 text-[clamp(3rem,12vw,8rem)] font-semibold leading-none">
+        <span class="text-gradient">Signal lost</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-md text-balance text-muted">
+        This route doesn’t exist in the system. The data you’re looking for may
+        have moved or never been deployed.
+      </p>
+      <div class="mt-9 flex flex-wrap justify-center gap-3">
+        <Button href="/" size="lg" icon="arrowRight">Back to home</Button>
+        <Button href="/projects" variant="secondary" size="lg">View projects</Button>
+      </div>
+    </Container>
+  </section>
+</Layout>

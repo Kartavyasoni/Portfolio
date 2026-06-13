@@ -1,0 +1,88 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PageHero from '@/components/PageHero.astro';
+import Container from '@/components/ui/Container.astro';
+import GlowCard from '@/components/ui/GlowCard.astro';
+import Icon from '@/components/ui/Icon.astro';
+import ContactForm from '@/components/react/ContactForm';
+import { site, socials } from '@/lib/site';
+
+const methods = [
+  { label: 'Email', value: site.email, href: `mailto:${site.email}`, icon: 'email' as const },
+  ...socials
+    .filter((s) => s.icon !== 'email')
+    .map((s) => ({
+      label: s.label,
+      value: s.href.replace(/^https?:\/\//, ''),
+      href: s.href,
+      icon: s.icon,
+    })),
+];
+---
+
+<Layout
+  title="Contact"
+  description="Get in touch to build intelligent systems that create measurable impact."
+>
+  <PageHero
+    kicker="Communication Hub"
+    title="Let’s connect"
+    intro="Open to roles and collaborations in data engineering and applied AI. Send a signal — I respond to every message."
+  />
+
+  <section class="pb-24">
+    <Container>
+      <div class="grid gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-10">
+        <!-- Left: methods + closing -->
+        <div class="flex flex-col gap-4" data-reveal>
+          {
+            methods.map((m) => (
+              <a
+                href={m.href}
+                target={m.icon === 'email' ? undefined : '_blank'}
+                rel="noopener noreferrer"
+                class="group flex items-center gap-4 rounded-[var(--radius-card)] border border-border bg-surface-2/50 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40"
+              >
+                <span class="grid size-11 shrink-0 place-items-center rounded-lg border border-border bg-surface-3 text-accent transition-colors group-hover:border-accent/40">
+                  <Icon name={m.icon} class="size-5" />
+                </span>
+                <span class="min-w-0">
+                  <span class="block font-mono text-xs uppercase tracking-wider text-faint">
+                    {m.label}
+                  </span>
+                  <span class="block truncate text-sm text-text">{m.value}</span>
+                </span>
+                <Icon
+                  name="arrowUpRight"
+                  class="ml-auto size-4 text-faint transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                />
+              </a>
+            ))
+          }
+
+          <div
+            class="mt-2 rounded-[var(--radius-card)] border border-accent/20 bg-accent/5 p-6"
+          >
+            <p class="text-balance text-lg font-medium text-text">
+              “Let’s build intelligent systems that create measurable impact.”
+            </p>
+            <p class="mt-3 font-mono text-xs text-muted">
+              — Based in {site.location} · Available worldwide (remote)
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div data-reveal>
+          <GlowCard noLift class="relative">
+            <span class="kicker">Send a message</span>
+            <p class="mt-2 mb-6 text-sm text-muted">
+              Fill in the form and it lands straight in my inbox.
+            </p>
+            <ContactForm client:load />
+          </GlowCard>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>

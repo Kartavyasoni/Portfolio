@@ -1,0 +1,98 @@
+---
+import Section from '@/components/ui/Section.astro';
+import GlowCard from '@/components/ui/GlowCard.astro';
+import { metrics, pillars } from '@/data/strengths';
+---
+
+<Section
+  id="strengths"
+  kicker="Why Me"
+  title="Built for production, not just prototypes"
+  intro="The combination that makes data + AI work usefully: engineering rigor applied to intelligent systems."
+>
+  <!-- Metrics -->
+  <div class="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
+    {
+      metrics.map((m) => (
+        <div data-reveal>
+          <GlowCard class="h-full text-center sm:text-left">
+            <div class="font-display text-4xl font-semibold text-gradient sm:text-5xl">
+              <span
+                class="countup tabular-nums"
+                data-countup-value={m.value}
+                data-countup-prefix={m.prefix ?? ''}
+                data-countup-suffix={m.suffix ?? ''}
+                data-countup-decimals={String(m.value % 1 !== 0 ? 1 : 0)}
+              >
+                {m.prefix ?? ''}0{m.suffix ?? ''}
+              </span>
+            </div>
+            <p class="mt-3 text-sm text-muted">{m.label}</p>
+          </GlowCard>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Pillars -->
+  <div class="mt-5 grid gap-4 md:grid-cols-2">
+    {
+      pillars.map((p, i) => (
+        <div data-reveal>
+          <GlowCard class="h-full">
+            <div class="flex gap-4">
+              <span class="font-mono text-sm text-accent">0{i + 1}</span>
+              <div>
+                <h3 class="text-lg font-semibold">{p.title}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-muted">{p.description}</p>
+              </div>
+            </div>
+          </GlowCard>
+        </div>
+      ))
+    }
+  </div>
+</Section>
+
+<script>
+  // Count-up animation, triggered once when each metric scrolls into view.
+  const els = document.querySelectorAll<HTMLElement>('.countup');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const animate = (el: HTMLElement) => {
+    const target = parseFloat(el.dataset.countupValue ?? '0');
+    const prefix = el.dataset.countupPrefix ?? '';
+    const suffix = el.dataset.countupSuffix ?? '';
+    const decimals = parseInt(el.dataset.countupDecimals ?? '0', 10);
+
+    if (prefersReduced) {
+      el.textContent = `${prefix}${target.toFixed(decimals)}${suffix}`;
+      return;
+    }
+
+    const duration = 1600;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / duration, 1);
+      // easeOutExpo
+      const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+      el.textContent = `${prefix}${(target * eased).toFixed(decimals)}${suffix}`;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target as HTMLElement);
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  els.forEach((el) => io.observe(el));
+</script>

@@ -1,0 +1,143 @@
+---
+import Container from '@/components/ui/Container.astro';
+import Button from '@/components/ui/Button.astro';
+import HeroScene from '@/components/three/HeroScene';
+import { site } from '@/lib/site';
+
+const stats = [
+  { value: '15+', label: 'Pipelines shipped' },
+  { value: '12+', label: 'Models in prod' },
+  { value: 'M.Sc.', label: 'Computer Science' },
+];
+---
+
+<section
+  class="hero-cinema relative flex min-h-[100svh] items-center overflow-hidden"
+>
+  <!-- Static backdrop (paints immediately, stays behind the canvas) -->
+  <div class="bg-grid pointer-events-none absolute inset-0 opacity-50"></div>
+  <div
+    class="glow-halo pointer-events-none absolute -top-[20%] left-1/2 size-[60vw] max-w-2xl -translate-x-1/2 opacity-60"
+  >
+  </div>
+
+  <!-- 3D wireframe terrain (browser-only island) -->
+  <div class="pointer-events-none absolute inset-0">
+    <HeroScene client:only="react" />
+  </div>
+
+  <!-- Readability scrim: darkens behind the text column without hiding the terrain -->
+  <div
+    class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#05070a] via-[#05070a]/55 to-transparent sm:via-[#05070a]/30"
+  >
+  </div>
+
+  <!-- Bottom fade into the themed page -->
+  <div
+    class="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-[var(--bg)]"
+  >
+  </div>
+
+  <!-- Content -->
+  <Container class="relative z-10 pt-28 pb-20">
+    <div class="max-w-3xl" data-hero>
+      <span class="kicker inline-flex items-center gap-2" data-hero-item>
+        <span class="relative flex size-2">
+          <span
+            class="absolute inline-flex size-full animate-ping rounded-full bg-cyan-400 opacity-75"
+          ></span>
+          <span class="relative inline-flex size-2 rounded-full bg-cyan-400"></span>
+        </span>
+        {site.role} · {site.location}
+      </span>
+
+      <h1
+        class="mt-6 text-[clamp(2.5rem,7vw,5rem)] font-semibold leading-[1.02]"
+        data-hero-item
+      >
+        Transforming Raw Data into
+        <span class="text-gradient">Production-Ready Intelligence</span>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-lg text-muted" data-hero-item>
+        {site.subheadline}
+      </p>
+
+      <div class="mt-9 flex flex-wrap gap-3" data-hero-item>
+        <Button href="/projects" size="lg" icon="arrowRight">View Projects</Button>
+        <Button href="/about" variant="secondary" size="lg">Know More About Me</Button>
+      </div>
+
+      <!-- Quick stats -->
+      <dl class="mt-14 flex flex-wrap gap-x-10 gap-y-6" data-hero-item>
+        {
+          stats.map((s) => (
+            <div class="flex flex-col">
+              <dt class="font-display text-2xl font-semibold text-text sm:text-3xl">
+                {s.value}
+              </dt>
+              <dd class="mt-1 font-mono text-xs tracking-wide text-faint">{s.label}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </Container>
+
+  <!-- Scroll cue -->
+  <div
+    class="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center"
+    data-hero-item
+  >
+    <div class="flex flex-col items-center gap-2 text-faint">
+      <span class="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll</span>
+      <span class="h-10 w-px animate-pulse-glow bg-gradient-to-b from-accent to-transparent"
+      ></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Always-dark cinematic backdrop so the wireframe reads in both themes. */
+  .hero-cinema {
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(46, 124, 246, 0.18), transparent 60%),
+      radial-gradient(80% 60% at 80% 20%, rgba(34, 211, 238, 0.1), transparent 55%),
+      linear-gradient(180deg, #05070a 0%, #060912 55%, var(--bg) 100%);
+    color: #e6edf3;
+  }
+
+  /* Hero intro — pure CSS (no JS dependency) to keep LCP fast. */
+  @media (prefers-reduced-motion: no-preference) {
+    [data-hero-item] {
+      opacity: 0;
+      animation: hero-in 0.8s var(--ease-out-expo) forwards;
+    }
+    [data-hero] > [data-hero-item]:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+    [data-hero] > [data-hero-item]:nth-child(2) {
+      animation-delay: 0.14s;
+    }
+    [data-hero] > [data-hero-item]:nth-child(3) {
+      animation-delay: 0.23s;
+    }
+    [data-hero] > [data-hero-item]:nth-child(4) {
+      animation-delay: 0.32s;
+    }
+    [data-hero] > [data-hero-item]:nth-child(5) {
+      animation-delay: 0.41s;
+    }
+  }
+
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
