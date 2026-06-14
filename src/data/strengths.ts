@@ -12,10 +12,10 @@ export type Metric = {
 };
 
 export const metrics: Metric[] = [
-  { value: 40, suffix: '%', label: 'Fewer pipeline data quality incidents' },
-  { value: 60, suffix: '%', label: 'Pipeline latency cut via caching' },
-  { value: 99.9, suffix: '%', decimals: 1, label: 'Pipeline uptime SLA maintained' },
-  { value: 10, suffix: 'M+', label: 'Records engineered & optimized' },
+  { value: 1, suffix: 'B+', label: 'Records Processed' },
+  { value: 5, suffix: '+', label: 'End-to-End Projects' },
+  { value: 3.96, decimals: 2, label: 'Master’s GPA' },
+  { value: 100, suffix: '%', label: 'Production-First Mindset' },
 ];
 
 export type Pillar = {
@@ -25,23 +25,23 @@ export type Pillar = {
 
 export const pillars: Pillar[] = [
   {
-    title: 'Pipelines, end to end',
+    title: 'End-to-End Ownership',
     description:
-      'From raw ingestion on AWS S3/Glue and FastAPI ETL to clean, analytics-ready datasets — I own the full data pipeline lifecycle, not just one step.',
+      'I design and build complete data workflows, from ingestion and transformation to warehousing, orchestration, and consumption. I understand how every layer of the data stack connects and performs in production.',
   },
   {
-    title: 'Production-grade engineering mindset',
+    title: 'Reliability First',
     description:
-      'Data observability, pipeline monitoring, and schema validation. I build pipelines that survive production edge cases, not just ones that run once.',
+      'Reliable data beats clever pipelines. I prioritize data quality, observability, monitoring, validation, and fault tolerance to ensure systems remain trustworthy as they scale.',
   },
   {
-    title: 'Reliable, trustworthy data',
+    title: 'Built for Scale',
     description:
-      'Data quality checks, VIF analysis, and anomaly detection — I make pipelines produce data that downstream teams can actually trust.',
+      'Whether processing millions of records, orchestrating complex workflows, or supporting AI workloads, I engineer solutions that remain performant, maintainable, and cost-efficient.',
   },
   {
-    title: 'Strong CS foundation',
+    title: 'AI-Ready Data Foundations',
     description:
-      'An M.S. in Computer Science (3.96 GPA) at Florida Atlantic University, backed by a track record of measurable, quantified impact.',
+      'Machine learning succeeds when the underlying data infrastructure is engineered correctly. I build the pipelines, storage layers, and workflows that transform raw data into production-ready assets for AI systems.',
   },
 ];
