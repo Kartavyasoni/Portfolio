@@ -29,8 +29,8 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
   .name { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:26px; }
   .kicker { font-family:'JetBrains Mono',monospace; font-size:18px; letter-spacing:.18em;
     text-transform:uppercase; color:#38bdf8; }
-  h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:74px; line-height:1.04;
-    letter-spacing:-.02em; max-width:1000px; margin-top:18px; }
+  h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:62px; line-height:1.06;
+    letter-spacing:-.02em; max-width:1040px; margin-top:18px; }
   .grad { background:linear-gradient(120deg,#38bdf8,#22d3ee); -webkit-background-clip:text; background-clip:text; color:transparent; }
   .foot { display:flex; gap:14px; }
   .chip { font-family:'JetBrains Mono',monospace; font-size:17px; color:#94a3b8;
@@ -45,7 +45,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
     </div>
     <div>
       <div class="kicker">Data Engineer</div>
-      <h1>Building the Pipelines That <span class="grad">Make Data Useful</span></h1>
+      <h1>Engineering the Foundations for <span class="grad">Modern AI and Machine Learning</span></h1>
     </div>
     <div class="foot">
       <span class="chip">Data Engineering</span>

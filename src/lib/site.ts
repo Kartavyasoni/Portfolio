@@ -8,7 +8,7 @@ export const site = {
   // Short brand mark used in the nav / logo.
   brand: 'KS',
   role: 'Data Engineer',
-  headline: 'Building the Pipelines That Make Data Useful',
+  headline: 'Engineering the Foundations for Modern AI and Machine Learning',
   subheadline:
     'Computer Science Master’s graduate (Florida Atlantic University) specializing in data engineering, designing and building scalable ETL/ELT pipelines, cloud data infrastructure, and analytics-ready data systems.',
   description:
