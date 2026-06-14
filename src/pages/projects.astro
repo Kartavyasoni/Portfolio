@@ -19,11 +19,16 @@ const cards: ProjectCardData[] = projects.map((p) => ({
   tags: p.data.tags,
   techStack: p.data.techStack,
 }));
+
+// Only show filter chips for categories that actually have projects.
+const presentCategories = PROJECT_CATEGORIES.filter((c) =>
+  cards.some((card) => card.category === c),
+);
 ---
 
 <Layout
   title="Projects"
-  description="A gallery of production-focused data engineering, machine learning, AI, and full-stack projects."
+  description="A gallery of production-focused data engineering projects — ETL/ELT pipelines, cloud data infrastructure, and analytics-ready data systems."
 >
   <PageHero
     kicker="Selected Work"
@@ -36,7 +41,7 @@ const cards: ProjectCardData[] = projects.map((p) => ({
       <ProjectsGallery
         client:load
         projects={cards}
-        categories={[...PROJECT_CATEGORIES]}
+        categories={presentCategories}
       />
     </Container>
   </section>

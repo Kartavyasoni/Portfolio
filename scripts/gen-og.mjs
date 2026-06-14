@@ -44,13 +44,13 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
       <div class="name">Kartavya Soni</div>
     </div>
     <div>
-      <div class="kicker">Data Scientist · ML Engineer</div>
-      <h1>Transforming Raw Data into <span class="grad">Production-Ready Intelligence</span></h1>
+      <div class="kicker">Data Engineer</div>
+      <h1>Building the Pipelines That <span class="grad">Make Data Useful</span></h1>
     </div>
     <div class="foot">
-      <span class="chip">Machine Learning</span>
-      <span class="chip">MLOps & Cloud</span>
-      <span class="chip">Data Science</span>
+      <span class="chip">Data Engineering</span>
+      <span class="chip">Pipeline Orchestration</span>
+      <span class="chip">Cloud Infrastructure</span>
     </div>
   </div>
 </body></html>`;

@@ -12,27 +12,27 @@ export type Expertise = {
 export const expertise: Expertise[] = [
   {
     title: 'Data Engineering',
-    blurb: 'ETL pipelines that turn raw, semi-structured data into clean, model-ready datasets.',
+    blurb: 'ETL/ELT pipelines that turn raw, semi-structured data into clean, analytics-ready datasets.',
     icon: 'pipeline',
     skills: ['AWS S3 / Glue', 'FastAPI ETL', 'Pandas', 'PySpark'],
   },
   {
-    title: 'Machine Learning',
-    blurb: 'Supervised models tuned to perform on real, imbalanced, messy data.',
+    title: 'Pipeline Orchestration',
+    blurb: 'Scheduling, monitoring, and orchestrating complex data workflows end-to-end.',
     icon: 'ml',
-    skills: ['XGBoost', 'Random Forest', 'Scikit-Learn', 'SHAP'],
+    skills: ['Apache Airflow', 'AWS Glue', 'Step Functions', 'Cron'],
   },
   {
-    title: 'MLOps & Cloud',
-    blurb: 'Deploying, versioning, and monitoring models with reproducible workflows.',
+    title: 'Cloud & Infrastructure',
+    blurb: 'Orchestrating and deploying data pipelines with scalable, reproducible cloud infrastructure.',
     icon: 'ai',
-    skills: ['AWS SageMaker', 'Docker', 'MLflow', 'CI/CD'],
+    skills: ['AWS', 'Docker', 'CI/CD', 'GitHub Actions'],
   },
   {
-    title: 'Data Science',
-    blurb: 'Statistics, experimentation, forecasting, and clustering to surface signal.',
+    title: 'Data Modeling & Warehousing',
+    blurb: 'Designing schemas and warehouse layers that make downstream analytics fast and reliable.',
     icon: 'analytics',
-    skills: ['A/B Testing', 'ARIMA', 'K-Means', 'PCA'],
+    skills: ['dbt', 'Snowflake', 'Redshift', 'Star Schema'],
   },
   {
     title: 'Databases',
@@ -42,7 +42,7 @@ export const expertise: Expertise[] = [
   },
   {
     title: 'APIs & Visualization',
-    blurb: 'Serving models and insight through APIs, dashboards, and clear visuals.',
+    blurb: 'Serving data and insight through APIs, dashboards, and clear visuals.',
     icon: 'fullstack',
     skills: ['FastAPI', 'Streamlit', 'Tableau', 'Seaborn'],
   },

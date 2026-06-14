@@ -21,7 +21,7 @@ export const timeline: TimelineEntry[] = [
     title: 'M.S. Computer Science',
     org: 'Florida Atlantic University · Boca Raton, FL',
     summary:
-      'GPA 3.96. Focused on machine learning, data systems, and applied analytics.',
+      'GPA 3.96. Focused on data systems, distributed computing, and large-scale analytics.',
     featured: true,
   },
   {
@@ -36,10 +36,10 @@ export const timeline: TimelineEntry[] = [
   {
     kind: 'experience',
     period: 'Dec 2023 — Jun 2024',
-    title: 'Machine Learning Engineer',
+    title: 'Data Engineer',
     org: 'Unified Mentor · Gurugram, India',
     summary:
-      'Built a data observability framework that cut production model incidents by 40%, and designed AWS SageMaker MLOps pipelines with versioning and A/B evaluation gates.',
+      'Built a data observability framework that cut production pipeline incidents by 40%, and designed scalable AWS data pipelines with automated monitoring and quality gates.',
     featured: true,
   },
   {

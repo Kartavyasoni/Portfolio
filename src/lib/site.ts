@@ -7,12 +7,12 @@ export const site = {
   name: 'Kartavya Soni',
   // Short brand mark used in the nav / logo.
   brand: 'KS',
-  role: 'Data Scientist · ML Engineer',
-  headline: 'Transforming Raw Data into Production-Ready Intelligence',
+  role: 'Data Engineer',
+  headline: 'Building the Pipelines That Make Data Useful',
   subheadline:
-    'Computer Science Master’s graduate (Florida Atlantic University) specializing in Machine Learning, MLOps, and data pipelines — turning messy data into deployed, explainable models.',
+    'Computer Science Master’s graduate (Florida Atlantic University) specializing in data engineering, designing and building scalable ETL/ELT pipelines, cloud data infrastructure, and analytics-ready data systems.',
   description:
-    'Personal portfolio of Kartavya Soni — Data Scientist and Machine Learning Engineer building production-grade ML systems, from AWS data pipelines to deployed, explainable models.',
+    'Personal portfolio of Kartavya Soni — Data Engineer building reliable, scalable data pipelines and infrastructure, from ingestion to analytics-ready data at scale.',
   url: 'https://kartavyasoni.vercel.app',
   email: 'sonikartavya2003@outlook.com',
   location: 'Florida, USA',

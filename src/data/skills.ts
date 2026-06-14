@@ -12,47 +12,45 @@ export type SkillGroup = {
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: 'Languages & Core',
-    caption: 'The core toolkit for wrangling and modeling data.',
+    title: 'Data Engineering',
+    caption: 'The core toolkit for building and shaping data pipelines.',
     skills: [
       { name: 'Python', level: 95 },
       { name: 'Advanced SQL', level: 90 },
+      { name: 'PySpark', level: 82 },
       { name: 'Pandas / NumPy', level: 92 },
-      { name: 'Scikit-Learn', level: 90 },
-      { name: 'PySpark', level: 78 },
+      { name: 'ETL / ELT Design', level: 88 },
     ],
   },
   {
-    title: 'Machine Learning',
-    caption: 'Supervised learning, forecasting, and statistics.',
+    title: 'Orchestration & Cloud',
+    caption: 'Scheduling pipelines and running them reliably in the cloud.',
     skills: [
-      { name: 'XGBoost', level: 88 },
-      { name: 'Random Forest', level: 85 },
-      { name: 'Time-Series (ARIMA)', level: 80 },
-      { name: 'Clustering (K-Means, PCA)', level: 82 },
-      { name: 'A/B & Hypothesis Testing', level: 80 },
-    ],
-  },
-  {
-    title: 'MLOps & Cloud',
-    caption: 'Shipping and operating models reliably in the cloud.',
-    skills: [
-      { name: 'AWS (S3, Glue, SageMaker)', level: 82 },
+      { name: 'AWS (S3, Glue)', level: 84 },
+      { name: 'Apache Airflow', level: 74 },
       { name: 'Docker', level: 80 },
-      { name: 'Git / GitHub Actions', level: 85 },
-      { name: 'CI/CD Pipelines', level: 78 },
-      { name: 'MLflow', level: 75 },
+      { name: 'CI/CD (GitHub Actions)', level: 82 },
     ],
   },
   {
-    title: 'Systems & Visualization',
-    caption: 'APIs, databases, and the dashboards that surface insight.',
+    title: 'Storage & Modeling',
+    caption: 'Relational, document, and warehouse data modeled for analytics.',
     skills: [
-      { name: 'FastAPI', level: 85 },
-      { name: 'PostgreSQL', level: 82 },
-      { name: 'MongoDB', level: 75 },
-      { name: 'Tableau', level: 78 },
-      { name: 'Streamlit', level: 84 },
+      { name: 'PostgreSQL', level: 84 },
+      { name: 'MongoDB', level: 76 },
+      { name: 'dbt / Warehousing', level: 72 },
+      { name: 'Data Modeling (Star Schema)', level: 80 },
+    ],
+  },
+  {
+    title: 'Adjacent: ML & Analytics',
+    caption: 'Adjacent skills that round out a data engineer.',
+    skills: [
+      { name: 'Scikit-Learn', level: 88 },
+      { name: 'XGBoost', level: 82 },
+      { name: 'Time-Series (ARIMA)', level: 78 },
+      { name: 'A/B & Hypothesis Testing', level: 78 },
+      { name: 'Tableau / Streamlit', level: 80 },
     ],
   },
 ];

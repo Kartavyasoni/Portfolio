@@ -1,9 +1,9 @@
 ---
 title: 'Loan Meter: Financial Risk Engine'
-description: An explainable credit-risk model that predicts loan default on highly imbalanced data and returns regulator-friendly reason codes for every decision.
-category: Machine Learning
-tags: [classification, explainability, etl, risk]
-techStack: [XGBoost, Python, Pandas, SHAP, Bayesian Optimization]
+description: A data pipeline that cleans and feature-engineers 200k+ loan records — automated outlier detection, missing-data handling, and quality checks — feeding a downstream credit-risk model.
+category: Data Engineering
+tags: [etl, pipeline, feature-engineering, data-quality]
+techStack: [Pandas, Python, XGBoost, SHAP, Bayesian Optimization]
 problem: >
   Lenders need to predict default risk on heavily imbalanced data (roughly 10
   good loans per bad one) while staying transparent — a black-box score that
@@ -31,9 +31,16 @@ publishedAt: 2025-02-01
 
 ## Overview
 
-Loan Meter is a credit-risk model designed for the real world: imbalanced data,
-a hard precision requirement, and a regulatory need to **explain every
-decision** — not just produce a score.
+Loan Meter starts where every model does: the data. Behind the risk score is a
+**Pandas pipeline** that cleans and feature-engineers 200k+ loan records —
+automated outlier detection, missing-data handling, and quality checks — so the
+downstream model is fed reliable, well-shaped features instead of raw noise.
+
+## The data pipeline
+
+The engineering work is the foundation: ingest 200k+ records, automatically
+detect and handle outliers and missing values, and engineer the features that
+make the signal learnable — a repeatable pipeline, not a one-off notebook clean-up.
 
 ## Handling imbalance honestly
 

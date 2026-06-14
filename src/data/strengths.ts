@@ -12,9 +12,9 @@ export type Metric = {
 };
 
 export const metrics: Metric[] = [
-  { value: 40, suffix: '%', label: 'Fewer production ML incidents (observability)' },
+  { value: 40, suffix: '%', label: 'Fewer pipeline data quality incidents' },
   { value: 60, suffix: '%', label: 'Pipeline latency cut via caching' },
-  { value: 0.94, decimals: 2, label: 'Best model F1-score on imbalanced data' },
+  { value: 99.9, suffix: '%', decimals: 1, label: 'Pipeline uptime SLA maintained' },
   { value: 10, suffix: 'M+', label: 'Records engineered & optimized' },
 ];
 
@@ -25,19 +25,19 @@ export type Pillar = {
 
 export const pillars: Pillar[] = [
   {
-    title: 'Data + ML, end to end',
+    title: 'Pipelines, end to end',
     description:
-      'From AWS S3/Glue and FastAPI ETL pipelines to trained, deployed models — I own the full lifecycle, not just the modeling step.',
+      'From raw ingestion on AWS S3/Glue and FastAPI ETL to clean, analytics-ready datasets — I own the full data pipeline lifecycle, not just one step.',
   },
   {
-    title: 'Production & MLOps mindset',
+    title: 'Production-grade engineering mindset',
     description:
-      'Data observability, model versioning, and A/B evaluation gates. I build models that survive production, not just notebooks that demo well.',
+      'Data observability, pipeline monitoring, and schema validation. I build pipelines that survive production edge cases, not just ones that run once.',
   },
   {
-    title: 'Explainable, trustworthy models',
+    title: 'Reliable, trustworthy data',
     description:
-      'SHAP reason codes, VIF analysis, and calibrated thresholds — I make models interpretable and defensible, not just accurate.',
+      'Data quality checks, VIF analysis, and anomaly detection — I make pipelines produce data that downstream teams can actually trust.',
   },
   {
     title: 'Strong CS foundation',
