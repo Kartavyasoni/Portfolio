@@ -1,0 +1,13 @@
+import puppeteer from 'puppeteer-core';
+const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const URL = process.argv[2] ?? 'http://localhost:4321/';
+const OUT = process.argv[3] ?? '/tmp/header-crop.png';
+const W = parseInt(process.env.W ?? '1440', 10);
+const b = await puppeteer.launch({ executablePath: CHROME, headless: 'new', args: ['--no-sandbox','--ignore-gpu-blocklist','--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader'] });
+const p = await b.newPage();
+await p.setViewport({ width: W, height: 400, deviceScaleFactor: 2 });
+await p.goto(URL, { waitUntil: 'networkidle0' });
+await new Promise(r => setTimeout(r, 2000));
+await p.screenshot({ path: OUT, clip: { x: 0, y: 0, width: W, height: 110 } });
+console.log('header →', OUT);
+await b.close();
