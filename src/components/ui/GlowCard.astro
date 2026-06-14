@@ -8,9 +8,16 @@ interface Props {
   class?: string;
   /** Disable the lift-on-hover translate (e.g. for large feature cards). */
   noLift?: boolean;
+  /** On hover, use a bold accent (blue) border instead of the subtle one. */
+  accentHover?: boolean;
 }
 
-const { href, class: className, noLift = false } = Astro.props;
+const {
+  href,
+  class: className,
+  noLift = false,
+  accentHover = false,
+} = Astro.props;
 const Tag = href ? 'a' : 'div';
 ---
 
@@ -18,7 +25,10 @@ const Tag = href ? 'a' : 'div';
   href={href}
   data-glow
   class:list={[
-    'group/glow relative block overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface-2/50 p-6 transition-all duration-500 ease-[var(--ease-out-expo)] hover:border-border-strong',
+    'group/glow relative block overflow-hidden rounded-[var(--radius-card)] border border-border bg-surface-2/50 p-6 transition-all duration-500 ease-[var(--ease-out-expo)]',
+    accentHover
+      ? 'hover:border-accent hover:ring-1 hover:ring-accent'
+      : 'hover:border-border-strong',
     !noLift && 'hover:-translate-y-1',
     className,
   ]}
