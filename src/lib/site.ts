@@ -9,8 +9,9 @@ export const site = {
   brand: 'KS',
   role: 'Data Engineer',
   headline: 'Engineering the Foundations for Modern AI and Machine Learning',
+  tagline: 'Most AI fails because of bad data infrastructure. I make sure yours doesn’t.',
   subheadline:
-    'Computer Science Master’s graduate (Florida Atlantic University) specializing in data engineering, designing and building scalable ETL/ELT pipelines, cloud data infrastructure, and analytics-ready data systems.',
+    'I’m the engineer behind the curtain — turning raw, messy data into the production-ready backbone that keeps ML systems fast, clean, and unstoppable.',
   description:
     'Personal portfolio of Kartavya Soni — Data Engineer building reliable, scalable data pipelines and infrastructure, from ingestion to analytics-ready data at scale.',
   url: 'https://kartavyasoni.vercel.app',
