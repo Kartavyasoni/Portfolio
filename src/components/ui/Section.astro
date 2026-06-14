@@ -10,6 +10,8 @@ interface Props {
   intro?: string;
   align?: 'left' | 'center';
   container?: 'default' | 'narrow' | 'wide';
+  /** Max-width utility for the header block (default max-w-2xl). */
+  headerWidth?: string;
   class?: string;
 }
 
@@ -20,6 +22,7 @@ const {
   intro,
   align = 'left',
   container = 'default',
+  headerWidth = 'max-w-2xl',
   class: className,
 } = Astro.props;
 
@@ -31,7 +34,7 @@ const alignCls = align === 'center' ? 'text-center mx-auto items-center' : '';
   <Container size={container}>
     {
       hasHeader && (
-        <header class={`flex max-w-2xl flex-col gap-4 ${alignCls}`} data-reveal>
+        <header class={`flex ${headerWidth} flex-col gap-4 ${alignCls}`} data-reveal>
           {kicker && <span class="kicker">{kicker}</span>}
           {title && (
             <h2 class="text-3xl font-semibold sm:text-4xl md:text-5xl">{title}</h2>
