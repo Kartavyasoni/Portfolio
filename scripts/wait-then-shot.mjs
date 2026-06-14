@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer-core';
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const URL = 'https://kartavyasoni.vercel.app/';
-const MARKER = 'h-15'; // class unique to the new single-capsule navbar
+const MARKER = 'h-19'; // taller refined capsule
 const deadline = Date.now() + 180000;
 let live = false;
 process.stdout.write('Waiting for redeploy');
@@ -20,7 +20,7 @@ if (live) {
   await p.setViewport({ width: 1440, height: 400, deviceScaleFactor: 2 });
   await p.goto(URL, { waitUntil: 'networkidle0' });
   await new Promise((r) => setTimeout(r, 2000));
-  await p.screenshot({ path: '/tmp/live-capsule.png', clip: { x: 0, y: 0, width: 1440, height: 110 } });
+  await p.screenshot({ path: '/tmp/live-capsule.png', clip: { x: 0, y: 0, width: 1440, height: 140 } });
   console.log('live header → /tmp/live-capsule.png');
   await b.close();
 }

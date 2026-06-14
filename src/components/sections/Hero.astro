@@ -1,14 +1,7 @@
 ---
 import Container from '@/components/ui/Container.astro';
-import Button from '@/components/ui/Button.astro';
 import HeroScene from '@/components/three/HeroScene';
 import { site } from '@/lib/site';
-
-const stats = [
-  { value: '3.96', label: 'GPA · M.S. CS' },
-  { value: '0.94', label: 'Best model F1-score' },
-  { value: '40%', label: 'Fewer ML incidents' },
-];
 ---
 
 <section
@@ -26,9 +19,10 @@ const stats = [
     <HeroScene client:only="react" />
   </div>
 
-  <!-- Readability scrim: darkens behind the text column without hiding the terrain -->
+  <!-- Readability scrim: darkens behind the centered text -->
   <div
-    class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#05070a] via-[#05070a]/55 to-transparent sm:via-[#05070a]/30"
+    class="pointer-events-none absolute inset-0"
+    style="background: radial-gradient(75% 68% at 50% 46%, rgba(5,7,10,0.82), rgba(5,7,10,0.2) 60%, transparent 78%)"
   >
   </div>
 
@@ -39,48 +33,47 @@ const stats = [
   </div>
 
   <!-- Content -->
-  <Container class="relative z-10 pt-28 pb-20">
-    <div class="max-w-3xl" data-hero>
-      <span class="kicker inline-flex items-center gap-2" data-hero-item>
-        <span class="relative flex size-2">
+  <Container class="relative z-10 pt-28 pb-24">
+    <div class="mx-auto flex max-w-4xl flex-col items-center text-center" data-hero>
+      <!-- Availability badge -->
+      <span
+        class="inline-flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.2em] text-green-400"
+        data-hero-item
+      >
+        <span class="relative flex size-2.5">
           <span
-            class="absolute inline-flex size-full animate-ping rounded-full bg-cyan-400 opacity-75"
+            class="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-75"
           ></span>
-          <span class="relative inline-flex size-2 rounded-full bg-cyan-400"></span>
+          <span class="relative inline-flex size-2.5 rounded-full bg-green-400"></span>
         </span>
-        {site.role} · {site.location}
+        Open to work
       </span>
 
       <h1
-        class="mt-6 text-[clamp(2.5rem,7vw,5rem)] font-semibold leading-[1.02]"
+        class="mt-7 bg-gradient-to-b from-cyan-300 via-white to-slate-400 bg-clip-text text-[clamp(2.5rem,7.5vw,5.25rem)] font-bold leading-[1.03] text-transparent"
         data-hero-item
       >
-        Transforming Raw Data into
-        <span class="text-gradient">Production-Ready Intelligence</span>
+        Transforming Raw Data into Production-Ready Intelligence
       </h1>
 
-      <p class="mt-6 max-w-xl text-lg text-muted" data-hero-item>
+      <p class="mt-7 max-w-2xl text-lg text-muted" data-hero-item>
         {site.subheadline}
       </p>
 
-      <div class="mt-9 flex flex-wrap gap-3" data-hero-item>
-        <Button href="/projects" size="lg" icon="arrowRight">View Projects</Button>
-        <Button href="/about" variant="secondary" size="lg">Know More About Me</Button>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4" data-hero-item>
+        <a
+          href="/projects"
+          class="inline-flex h-14 items-center justify-center rounded-lg bg-white px-8 text-sm font-semibold uppercase tracking-wide text-[#05070a] transition-all duration-300 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:shadow-[0_14px_44px_-10px_rgba(255,255,255,0.35)]"
+        >
+          View Projects
+        </a>
+        <a
+          href="/about"
+          class="inline-flex h-14 items-center justify-center rounded-lg border border-white/15 bg-white/[0.03] px-8 text-sm font-semibold uppercase tracking-wide text-text backdrop-blur-sm transition-all duration-300 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.07]"
+        >
+          About Me
+        </a>
       </div>
-
-      <!-- Quick stats -->
-      <dl class="mt-14 flex flex-wrap gap-x-10 gap-y-6" data-hero-item>
-        {
-          stats.map((s) => (
-            <div class="flex flex-col">
-              <dt class="font-display text-2xl font-semibold text-text sm:text-3xl">
-                {s.value}
-              </dt>
-              <dd class="mt-1 font-mono text-xs tracking-wide text-faint">{s.label}</dd>
-            </div>
-          ))
-        }
-      </dl>
     </div>
   </Container>
 
@@ -117,16 +110,13 @@ const stats = [
       animation-delay: 0.05s;
     }
     [data-hero] > [data-hero-item]:nth-child(2) {
-      animation-delay: 0.14s;
+      animation-delay: 0.16s;
     }
     [data-hero] > [data-hero-item]:nth-child(3) {
-      animation-delay: 0.23s;
+      animation-delay: 0.27s;
     }
     [data-hero] > [data-hero-item]:nth-child(4) {
-      animation-delay: 0.32s;
-    }
-    [data-hero] > [data-hero-item]:nth-child(5) {
-      animation-delay: 0.41s;
+      animation-delay: 0.38s;
     }
   }
 

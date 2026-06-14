@@ -1,0 +1,10 @@
+import puppeteer from 'puppeteer-core';
+const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const b = await puppeteer.launch({ executablePath: CHROME, headless: 'new', args: ['--no-sandbox','--ignore-gpu-blocklist','--enable-unsafe-swiftshader','--use-gl=angle','--use-angle=swiftshader'] });
+const p = await b.newPage();
+await p.setViewport({ width: 390, height: 780, deviceScaleFactor: 2, isMobile: true });
+await p.goto('http://localhost:4321/', { waitUntil: 'networkidle0' });
+await new Promise(r => setTimeout(r, 2600));
+await p.screenshot({ path: '/tmp/hero-mobile.png' });
+console.log('mobile → /tmp/hero-mobile.png');
+await b.close();
