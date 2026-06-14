@@ -27,7 +27,7 @@ export const pillars: Pillar[] = [
   {
     title: 'End-to-End Ownership',
     description:
-      'I design and build complete data workflows, from ingestion and transformation to warehousing, orchestration, and consumption. I understand how every layer of the data stack connects and performs in production.',
+      'I design and build data workflows, from ingestion and transformation to warehousing, orchestration, and consumption. I understand how every layer of the data stack connects and performs.',
   },
   {
     title: 'Reliability First',
@@ -42,6 +42,6 @@ export const pillars: Pillar[] = [
   {
     title: 'AI-Ready Data Foundations',
     description:
-      'Machine learning succeeds when the underlying data infrastructure is engineered correctly. I build the pipelines, storage layers, and workflows that transform raw data into production-ready assets for AI systems.',
+      'Machine learning succeeds when the underlying data infrastructure is engineered correctly. I build pipelines and workflows that transform raw data into production-ready assets for AI systems.',
   },
 ];
