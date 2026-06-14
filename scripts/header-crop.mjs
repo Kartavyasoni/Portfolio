@@ -8,6 +8,6 @@ const p = await b.newPage();
 await p.setViewport({ width: W, height: 400, deviceScaleFactor: 2 });
 await p.goto(URL, { waitUntil: 'networkidle0' });
 await new Promise(r => setTimeout(r, 2000));
-await p.screenshot({ path: OUT, clip: { x: 0, y: 0, width: W, height: 140 } });
+await p.screenshot({ path: OUT, clip: { x: 0, y: 0, width: W, height: 120 } });
 console.log('header →', OUT);
 await b.close();

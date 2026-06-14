@@ -7,11 +7,12 @@ const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
-  <div class="mx-auto max-w-6xl">
+<header class="fixed inset-x-0 top-0 z-50 px-4 pt-4">
+  <!-- Wrapper shrinks to the capsule's content and centers it -->
+  <div class="relative mx-auto w-fit max-w-full">
     <!-- Single floating glass capsule holding everything -->
     <div
-      class="relative flex h-15 items-center justify-between gap-4 rounded-full border border-white/[0.12] bg-[color-mix(in_srgb,var(--bg)_58%,transparent)] pl-5 pr-2.5 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.7)] backdrop-blur-lg sm:pl-7"
+      class="flex h-14 items-center gap-6 rounded-full border border-white/[0.12] bg-[color-mix(in_srgb,var(--bg)_58%,transparent)] pl-5 pr-2 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.7)] backdrop-blur-lg"
     >
       <!-- Brand wordmark -->
       <a
@@ -22,11 +23,8 @@ const isActive = (href: string) =>
         Kartavya <span class="text-gradient">Soni</span>
       </a>
 
-      <!-- Center nav (absolutely centered like the reference) -->
-      <nav
-        class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex"
-        aria-label="Primary"
-      >
+      <!-- Center nav -->
+      <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
         {
           navItems.map((item) => (
             <a
@@ -48,14 +46,13 @@ const isActive = (href: string) =>
         <a
           href={site.resume}
           download
-          class="group/btn inline-flex h-10 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 px-4 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_var(--glow)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_-6px_var(--glow)] sm:px-5"
+          class="group/btn inline-flex h-10 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 px-4 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_var(--glow)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_-6px_var(--glow)]"
         >
           <Icon
             name="download"
             class="size-4 transition-transform duration-300 group-hover/btn:translate-y-0.5"
           />
-          <span class="hidden sm:inline">Download Resume</span>
-          <span class="sm:hidden">Resume</span>
+          Resume
         </a>
 
         <button
@@ -71,10 +68,10 @@ const isActive = (href: string) =>
       </div>
     </div>
 
-    <!-- Mobile menu (rounded glass panel below the capsule) -->
+    <!-- Mobile menu (aligned to the capsule width) -->
     <div
       id="mobile-menu"
-      class="mt-2 hidden overflow-hidden rounded-3xl border border-white/[0.12] bg-[color-mix(in_srgb,var(--bg)_82%,transparent)] backdrop-blur-lg md:hidden"
+      class="absolute inset-x-0 top-full mt-2 hidden overflow-hidden rounded-3xl border border-white/[0.12] bg-[color-mix(in_srgb,var(--bg)_85%,transparent)] backdrop-blur-lg md:hidden"
     >
       <div class="flex flex-col gap-1 p-3">
         {
