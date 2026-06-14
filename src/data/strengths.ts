@@ -27,7 +27,7 @@ export const pillars: Pillar[] = [
   {
     title: 'End-to-End Ownership',
     description:
-      'I design and build data workflows, from ingestion and transformation to warehousing, orchestration, and consumption. I understand how every layer of the data stack connects and performs.',
+      'I design and build workflows, from ingestion and transformation to warehousing, orchestration, and consumption. I understand how every layer of the data stack connects and performs.',
   },
   {
     title: 'Reliability First',
