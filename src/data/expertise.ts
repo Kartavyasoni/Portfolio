@@ -50,6 +50,6 @@ export const expertise: Expertise[] = [
     blurb:
       'Engineering production-ready infrastructure, feature stores, and pipelines that keep AI and ML unstoppable.',
     icon: 'ai',
-    skills: ['Vector Databases', 'RAG Architectures', 'MLOps', 'Feature Engineering', 'MLflow', 'LLMOps'],
+    skills: ['Vector Databases', 'RAG Architectures', 'MLOps', 'MLflow', 'LLMOps'],
   },
 ];
