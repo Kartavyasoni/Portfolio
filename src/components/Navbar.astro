@@ -7,16 +7,16 @@ const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+<header class="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-5">
   <div class="mx-auto max-w-7xl">
     <!-- Single floating glass capsule holding everything -->
     <div
-      class="relative flex h-15 items-center justify-between gap-4 rounded-full border border-white/10 bg-[color-mix(in_srgb,var(--bg)_55%,transparent)] pl-5 pr-2 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.7)] backdrop-blur-2xl sm:pl-7"
+      class="relative flex h-19 items-center justify-between gap-4 rounded-full border border-white/[0.12] bg-[color-mix(in_srgb,var(--bg)_58%,transparent)] pl-7 pr-3 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur-lg sm:pl-9"
     >
       <!-- Brand wordmark -->
       <a
         href="/"
-        class="font-display text-base font-bold tracking-tight whitespace-nowrap sm:text-lg"
+        class="font-display text-xl font-bold tracking-tight whitespace-nowrap sm:text-2xl"
         aria-label={`${site.name} — home`}
       >
         Kartavya <span class="text-gradient">Soni</span>
@@ -24,7 +24,7 @@ const isActive = (href: string) =>
 
       <!-- Center nav (absolutely centered like the reference) -->
       <nav
-        class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex"
+        class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex lg:gap-10"
         aria-label="Primary"
       >
         {
@@ -32,7 +32,7 @@ const isActive = (href: string) =>
             <a
               href={item.href}
               class:list={[
-                'text-sm tracking-wide transition-colors',
+                'text-[0.95rem] tracking-wide transition-colors',
                 isActive(item.href) ? 'text-text' : 'text-muted hover:text-text',
               ]}
               aria-current={isActive(item.href) ? 'page' : undefined}
@@ -44,15 +44,15 @@ const isActive = (href: string) =>
       </nav>
 
       <!-- Right cluster -->
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2.5">
         <a
           href={site.resume}
           download
-          class="group/btn inline-flex h-11 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 px-4 text-sm font-semibold text-white shadow-[0_8px_30px_-8px_var(--glow)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_-6px_var(--glow)] sm:px-5"
+          class="group/btn inline-flex h-12 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-600 to-brand-400 px-5 text-[0.95rem] font-semibold text-white shadow-[0_8px_30px_-8px_var(--glow)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_44px_-6px_var(--glow)] sm:px-6"
         >
           <Icon
             name="download"
-            class="size-4 transition-transform duration-300 group-hover/btn:translate-y-0.5"
+            class="size-[1.1rem] transition-transform duration-300 group-hover/btn:translate-y-0.5"
           />
           <span class="hidden sm:inline">Download Resume</span>
           <span class="sm:hidden">Resume</span>
@@ -61,12 +61,12 @@ const isActive = (href: string) =>
         <button
           type="button"
           id="menu-toggle"
-          class="grid size-11 place-items-center rounded-full border border-white/10 bg-white/5 text-muted transition-colors hover:text-text md:hidden"
+          class="grid size-12 place-items-center rounded-full border border-white/[0.12] bg-white/5 text-muted transition-colors hover:text-text md:hidden"
           aria-label="Open menu"
           aria-expanded="false"
           aria-controls="mobile-menu"
         >
-          <Icon name="menu" class="size-4" />
+          <Icon name="menu" class="size-5" />
         </button>
       </div>
     </div>
@@ -74,7 +74,7 @@ const isActive = (href: string) =>
     <!-- Mobile menu (rounded glass panel below the capsule) -->
     <div
       id="mobile-menu"
-      class="mt-2 hidden overflow-hidden rounded-3xl border border-white/10 bg-[color-mix(in_srgb,var(--bg)_80%,transparent)] backdrop-blur-2xl md:hidden"
+      class="mt-2.5 hidden overflow-hidden rounded-3xl border border-white/[0.12] bg-[color-mix(in_srgb,var(--bg)_82%,transparent)] backdrop-blur-lg md:hidden"
     >
       <div class="flex flex-col gap-1 p-3">
         {
@@ -82,7 +82,7 @@ const isActive = (href: string) =>
             <a
               href={item.href}
               class:list={[
-                'rounded-xl px-4 py-3 text-sm transition-colors',
+                'rounded-xl px-4 py-3.5 text-base transition-colors',
                 isActive(item.href)
                   ? 'bg-white/5 text-text'
                   : 'text-muted hover:bg-white/5 hover:text-text',
