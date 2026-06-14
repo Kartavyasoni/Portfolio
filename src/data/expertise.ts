@@ -5,45 +5,51 @@
 export type Expertise = {
   title: string;
   blurb: string;
-  icon: 'pipeline' | 'ml' | 'ai' | 'analytics' | 'database' | 'fullstack';
+  icon: 'pipeline' | 'distributed' | 'warehouse' | 'orchestration' | 'cloud' | 'ai';
   skills: string[];
 };
 
 export const expertise: Expertise[] = [
   {
-    title: 'Data Engineering',
-    blurb: 'ETL/ELT pipelines that turn raw, semi-structured data into clean, analytics-ready datasets.',
+    title: 'Data Pipeline Architecture',
+    blurb:
+      'Building scalable pipelines that move, transform, and deliver reliable data across complex systems.',
     icon: 'pipeline',
-    skills: ['AWS S3 / Glue', 'FastAPI ETL', 'Pandas', 'PySpark'],
+    skills: ['Python', 'SQL', 'API Integration', 'Batch Processing', 'ETL/ELT', 'Data Quality'],
   },
   {
-    title: 'Pipeline Orchestration',
-    blurb: 'Scheduling, monitoring, and orchestrating complex data workflows end-to-end.',
-    icon: 'ml',
-    skills: ['Apache Airflow', 'AWS Glue', 'Step Functions', 'Cron'],
+    title: 'Distributed Data Processing',
+    blurb:
+      'Processing massive datasets efficiently using distributed computing frameworks for high-performance data transformations.',
+    icon: 'distributed',
+    skills: ['PySpark', 'Apache Spark', 'Pandas', 'Hadoop', 'Distributed Systems', 'Data Modeling'],
   },
   {
-    title: 'Cloud & Infrastructure',
-    blurb: 'Orchestrating and deploying data pipelines with scalable, reproducible cloud infrastructure.',
+    title: 'Warehouses & Lakehouses',
+    blurb:
+      'Designing modern storage architectures that unify data lakes and warehouses for seamless analytics.',
+    icon: 'warehouse',
+    skills: ['Snowflake', 'Databricks', 'Redshift', 'Delta Lake', 'PostgreSQL', 'OLAP'],
+  },
+  {
+    title: 'Orchestration & Transformation',
+    blurb:
+      'Automating complex workflows and transforming operational data into trusted, analytics-ready business datasets.',
+    icon: 'orchestration',
+    skills: ['Apache Airflow', 'dbt', 'Prefect', 'Event-Driven Architecture', 'Data Governance'],
+  },
+  {
+    title: 'Cloud & DevOps Infrastructure',
+    blurb:
+      'Designing secure, cloud-native environments that power scalable data architectures and robust operational workloads.',
+    icon: 'cloud',
+    skills: ['AWS', 'S3', 'Lambda', 'Docker', 'Kubernetes', 'Terraform', 'CloudWatch'],
+  },
+  {
+    title: 'AI & ML Data Foundations',
+    blurb:
+      'Engineering production-ready infrastructure, feature stores, and pipelines that keep AI and ML unstoppable.',
     icon: 'ai',
-    skills: ['AWS', 'Docker', 'CI/CD', 'GitHub Actions'],
-  },
-  {
-    title: 'Data Modeling & Warehousing',
-    blurb: 'Designing schemas and warehouse layers that make downstream analytics fast and reliable.',
-    icon: 'analytics',
-    skills: ['dbt', 'Snowflake', 'Redshift', 'Star Schema'],
-  },
-  {
-    title: 'Databases',
-    blurb: 'Modeling and querying relational and document stores for analytics and apps.',
-    icon: 'database',
-    skills: ['PostgreSQL', 'MongoDB', 'Advanced SQL'],
-  },
-  {
-    title: 'APIs & Visualization',
-    blurb: 'Serving data and insight through APIs, dashboards, and clear visuals.',
-    icon: 'fullstack',
-    skills: ['FastAPI', 'Streamlit', 'Tableau', 'Seaborn'],
+    skills: ['Vector Databases', 'RAG Architectures', 'MLOps', 'Feature Engineering', 'MLflow', 'LLMOps'],
   },
 ];
