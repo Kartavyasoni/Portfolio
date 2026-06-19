@@ -10,7 +10,7 @@ export const site = {
   role: 'Data Scientist · ML Engineer',
   headline: 'Transforming Raw Data into Production-Ready Intelligence',
   subheadline:
-    'Computer Science Master’s graduate (Florida Atlantic University) working across data engineering, analytics, machine learning, and AI — turning raw, messy data into production-ready intelligence.',
+    'Computer Science Master’s graduate from Florida Atlantic University building intelligent systems that transform data into actionable insights, reliable solutions, and real-world impact.',
   description:
     'Personal portfolio of Kartavya Soni — Data Scientist and ML Engineer working across data engineering, analytics, machine learning, and AI to turn raw data into production-ready intelligence.',
   url: 'https://kartavyasoni.vercel.app',
