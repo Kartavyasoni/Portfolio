@@ -7,13 +7,12 @@ export const site = {
   name: 'Kartavya Soni',
   // Short brand mark used in the nav / logo.
   brand: 'KS',
-  role: 'Data Engineer',
-  headline: 'Engineering the Foundations for Modern AI and Machine Learning',
-  tagline: 'Most AI fails because of bad data infrastructure. I make sure yours doesn’t.',
+  role: 'Data Scientist · ML Engineer',
+  headline: 'Transforming Raw Data into Production-Ready Intelligence',
   subheadline:
-    'I’m the engineer behind the curtain — turning raw, messy data into the production-ready backbone that keeps ML systems fast, clean, and unstoppable.',
+    'Computer Science Master’s graduate (Florida Atlantic University) working across data engineering, analytics, machine learning, and AI — turning raw, messy data into production-ready intelligence.',
   description:
-    'Personal portfolio of Kartavya Soni — Data Engineer building reliable, scalable data pipelines and infrastructure, from ingestion to analytics-ready data at scale.',
+    'Personal portfolio of Kartavya Soni — Data Scientist and ML Engineer working across data engineering, analytics, machine learning, and AI to turn raw data into production-ready intelligence.',
   url: 'https://kartavyasoni.vercel.app',
   email: 'sonikartavya2003@outlook.com',
   location: 'Florida, USA',
