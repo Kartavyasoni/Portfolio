@@ -3,7 +3,11 @@ import Section from '@/components/ui/Section.astro';
 import Button from '@/components/ui/Button.astro';
 import { timeline, type TimelineKind } from '@/data/timeline';
 
-const entries = timeline.filter((e) => e.featured);
+// Show the compact preview in this order: experience, education, leadership.
+const previewOrder: TimelineKind[] = ['experience', 'education', 'leadership'];
+const entries = timeline
+  .filter((e) => e.featured)
+  .sort((a, b) => previewOrder.indexOf(a.kind) - previewOrder.indexOf(b.kind));
 
 const kindStyles: Record<TimelineKind, { dot: string; label: string }> = {
   education: { dot: 'bg-cyan-400', label: 'Education' },
@@ -16,7 +20,7 @@ const kindStyles: Record<TimelineKind, { dot: string; label: string }> = {
   id="journey"
   kicker="The Journey"
   title="A path through data and systems"
-  intro="Education, experience, and leadership — the compact version."
+  intro="Experience, education, and leadership — the compact version."
 >
   <div class="mt-14 grid gap-12 lg:grid-cols-[1fr_auto] lg:items-start">
     <ol class="relative ml-3 border-l border-border">

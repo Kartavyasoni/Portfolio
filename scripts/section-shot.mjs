@@ -6,8 +6,8 @@ await p.setViewport({ width: 1280, height: 900, deviceScaleFactor: 1.5 });
 await p.goto('http://localhost:4321/', { waitUntil: 'networkidle0' });
 await new Promise(r => setTimeout(r, 1500));
 // reveal + scroll to #expertise
-await p.evaluate(() => { document.documentElement.style.scrollBehavior='auto'; document.querySelectorAll('[data-reveal]').forEach(e=>e.style.opacity='1'); const el=document.getElementById('strengths'); el?.scrollIntoView(); });
+await p.evaluate(() => { document.documentElement.style.scrollBehavior='auto'; document.querySelectorAll('[data-reveal]').forEach(e=>e.style.opacity='1'); const el=document.getElementById('journey'); el?.scrollIntoView(); });
 await new Promise(r => setTimeout(r, 2600));
-await p.screenshot({ path: '/tmp/strengths.png' });
-console.log('strengths → /tmp/strengths.png');
+await p.screenshot({ path: '/tmp/journey.png' });
+console.log('journey → /tmp/journey.png');
 await b.close();
