@@ -36,7 +36,7 @@ export const timeline: TimelineEntry[] = [
   {
     kind: 'experience',
     period: 'Dec 2023 — Jun 2024',
-    title: 'Data Engineer',
+    title: 'Machine Learning Engineer',
     org: 'Unified Mentor · Gurugram, India',
     summary:
       'Built a data observability framework that cut production pipeline incidents by 40%, and designed scalable AWS data pipelines with automated monitoring and quality gates.',
