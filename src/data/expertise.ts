@@ -12,38 +12,44 @@ export type Expertise = {
 export const expertise: Expertise[] = [
   {
     title: 'Data Engineering',
-    blurb: 'ETL/ELT pipelines that turn raw, semi-structured data into clean, model-ready datasets.',
+    blurb:
+      'ETL/ELT pipelines that turn raw, semi-structured data into clean, model-ready datasets at scale.',
     icon: 'pipeline',
-    skills: ['AWS S3 / Glue', 'FastAPI ETL', 'Pandas', 'PySpark'],
+    skills: ['Python', 'Databricks', 'AWS S3 / Glue', 'Apache Airflow', 'PySpark', 'dbt', 'FastAPI'],
   },
   {
     title: 'Databases',
-    blurb: 'Modeling and querying relational and document stores for analytics and apps.',
+    blurb:
+      'Modeling and querying relational and document stores that power analytics, applications, and reporting layers.',
     icon: 'database',
-    skills: ['PostgreSQL', 'MongoDB', 'Advanced SQL'],
+    skills: ['PostgreSQL', 'MongoDB', 'Advanced SQL', 'Data Modeling', 'Snowflake', 'Redshift'],
   },
   {
     title: 'Data Science',
-    blurb: 'Statistics, experimentation, forecasting, and clustering to surface signal.',
+    blurb:
+      'Statistics, experimentation, and forecasting that surface real signal from noisy, real-world data.',
     icon: 'analytics',
-    skills: ['A/B Testing', 'ARIMA', 'K-Means', 'PCA'],
+    skills: ['A/B Testing', 'ARIMA', 'K-Means', 'PCA', 'Hypothesis Testing', 'Pandas'],
   },
   {
     title: 'Analytics & Visualization',
-    blurb: 'Turning data into insight through analysis, dashboards, and clear visuals.',
+    blurb:
+      'Turning analysis into clear, decision-ready dashboards and visuals that stakeholders actually understand and use.',
     icon: 'fullstack',
-    skills: ['Tableau', 'Streamlit', 'Seaborn', 'FastAPI'],
+    skills: ['Tableau', 'Streamlit', 'Seaborn', 'Power BI'],
   },
   {
     title: 'Machine Learning',
-    blurb: 'Supervised models tuned to perform on real, imbalanced, messy data.',
+    blurb:
+      'Supervised models tuned and explained to perform reliably on real, imbalanced, messy data.',
     icon: 'ml',
-    skills: ['XGBoost', 'Random Forest', 'Scikit-Learn', 'SHAP'],
+    skills: ['Scikit-Learn', 'XGBoost', 'Random Forest', 'SHAP', 'Feature Engineering', 'Model Evaluation'],
   },
   {
     title: 'AI & MLOps',
-    blurb: 'Deploying, versioning, and monitoring models with reproducible cloud workflows.',
+    blurb:
+      'Deploying, versioning, and monitoring models through reproducible, production-grade cloud workflows and CI/CD pipelines.',
     icon: 'ai',
-    skills: ['AWS SageMaker', 'Docker', 'MLflow', 'CI/CD'],
+    skills: ['AWS SageMaker', 'Docker', 'MLflow', 'CI/CD', 'Kubernetes', 'Model Monitoring', 'LLM', 'RAG'],
   },
 ];
