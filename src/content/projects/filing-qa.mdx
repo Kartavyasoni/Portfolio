@@ -1,0 +1,60 @@
+---
+title: 'FilingQA: RAG Analyst for SEC Filings'
+description: A retrieval-augmented research assistant that answers questions about SEC 10-K filings with citation-grounded answers backed by semantic search over EDGAR documents.
+category: AI
+tags: [rag, llm, semantic-search, nlp]
+techStack: [FastAPI, pgvector, Claude API, Sentence Transformers, SEC EDGAR, PostgreSQL]
+problem: >
+  Analysts need fast, trustworthy answers from dense SEC 10-K filings, but LLMs
+  hallucinate and keyword search returns noise. Every answer has to be grounded
+  in the actual filing text, with citations an analyst can verify.
+solution: >
+  A RAG assistant that ingests 10-K filings from SEC EDGAR, segments them by
+  section into searchable chunks, retrieves the most relevant passages via
+  semantic search, and generates citation-grounded answers with the Claude API
+  under controlled prompts that require every response to cite retrieved text.
+architecture: >
+  SEC EDGAR ingestion → section-aware chunking of 10-K filings → Sentence
+  Transformer embeddings stored in pgvector → semantic retrieval with ranked
+  passages exposed through FastAPI endpoints → Claude API answer generation with
+  controlled, citation-requiring prompts → a 100-question evaluation harness
+  scoring hit-rate@5, retrieval relevance, citation coverage, and faithfulness.
+results:
+  - Grounded every answer in retrieved filing passages, cutting unsupported interpretations
+  - Served ranked passages through FastAPI for responsive analyst Q&A and downstream apps
+  - Built a 100-question evaluation set for hit-rate@5, relevance, citation coverage, and faithfulness
+  - Section-aware chunking of 10-K filings for precise, searchable financial content
+github: https://github.com/Kartavyasoni
+featured: true
+order: 3
+publishedAt: 2025-06-01
+---
+
+## Overview
+
+FilingQA is a retrieval-augmented research assistant for SEC 10-K filings. Ask it
+a question about a company's financials and it answers in plain language — but
+only using text it can cite from the actual filing. The goal was a system an
+analyst could *trust*, not just a chatbot that sounds confident.
+
+## Retrieval before generation
+
+The hard part of RAG isn't the model — it's the retrieval. FilingQA ingests
+10-K filings from **SEC EDGAR**, segments each document **by section**, and
+embeds the chunks with **Sentence Transformers** into **pgvector**. Semantic
+search then surfaces the passages most relevant to a question, which FastAPI
+serves as ranked results for both the assistant and downstream applications.
+
+## Grounded, citation-first answers
+
+Answers are generated with the **Claude API** under controlled prompts that
+require every response to reference retrieved filing passages. By forcing the
+model to cite, unsupported interpretations drop sharply — the system says "here's
+what the filing states," not "here's what I think."
+
+## Measured, not vibes
+
+Before releasing it for portfolio demonstration, I built a **100-question
+evaluation set** measuring **hit-rate@5**, retrieval relevance, citation
+coverage, and answer faithfulness — so quality is a number I can point to, not a
+gut feeling.

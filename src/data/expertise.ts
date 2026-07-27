@@ -43,7 +43,7 @@ export const expertise: Expertise[] = [
     blurb:
       'Supervised models tuned and explained to perform reliably on real, imbalanced, messy data.',
     icon: 'ml',
-    skills: ['Scikit-Learn', 'XGBoost', 'Random Forest', 'SHAP', 'Feature Engineering', 'Model Evaluation'],
+    skills: ['Scikit-Learn', 'XGBoost', 'Random Forest', 'Feature Engineering', 'Model Evaluation'],
   },
   {
     title: 'AI & MLOps',
