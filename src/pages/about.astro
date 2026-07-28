@@ -8,36 +8,33 @@ import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
 import SkillsSection from '@/components/sections/about/SkillsSection.astro';
 import ExperienceTimeline from '@/components/sections/about/ExperienceTimeline.astro';
-import { timeline } from '@/data/timeline';
 import { certifications } from '@/data/certifications';
 import { site } from '@/lib/site';
 
-const leadership = timeline.filter((e) => e.kind === 'leadership');
-
 const philosophy = [
   {
-    title: 'Production over prototypes',
-    body: 'A model that runs once in a notebook is a prototype. I optimize for the version that runs reliably, observably, and affordably in production.',
+    title: 'Start from the decision',
+    body: 'Before a single feature, I ask what decision this model changes and who acts on it. That framing sets the target, the metric, and the threshold.',
   },
   {
-    title: 'Reliability is a feature',
-    body: 'Systems should fail loudly and recover gracefully. Observability, tests, and reproducibility are not optional extras.',
+    title: 'Distrust a great score',
+    body: 'Most impressive offline results are leakage. Out-of-time validation, fold-scoped preprocessing, and dropping post-outcome fields come before celebrating a number.',
   },
   {
-    title: 'Simple, then scalable',
-    body: 'I reach for the simplest design that solves the problem, and only add complexity when the data and load actually demand it.',
+    title: 'Explain, then deploy',
+    body: 'If a reviewer or auditor can’t follow why a prediction was made, it isn’t finished. SHAP, calibration, and human-in-the-loop review are part of the build.',
   },
 ];
 ---
 
 <Layout
   title="About"
-  description="The story, education, philosophy, skills, and experience behind a data scientist and ML engineer."
+  description="The story, education, philosophy, skills, and experience behind a data scientist working in insurance and financial services."
 >
   <PageHero
     kicker="About Me"
     title="From raw data to real-world impact"
-    intro="I’m a Computer Science Master’s graduate who works across the data stack — data engineering, analytics, machine learning, and AI — turning raw, messy data into reliable insight and intelligent systems."
+    intro="I’m a Data Scientist with 3 years of experience in insurance and financial services — building predictive models, Generative AI solutions, and responsible ML systems that improve real operational decisions."
   >
     <div class="mt-8 flex flex-wrap gap-3" data-hero-item>
       <Button href="/projects" icon="arrowRight">See the work</Button>
@@ -51,21 +48,25 @@ const philosophy = [
       <div data-reveal class="flex flex-col gap-5 text-base leading-relaxed text-muted">
         <span class="kicker">The Story</span>
         <p>
-          My path into data started with a simple frustration: the most
-          interesting questions were always blocked by messy, unreliable data.
-          So I went upstream — learning to build the systems that make data
-          trustworthy in the first place.
+          I got into data science through problems where being wrong is
+          expensive. Fraud alerts that waste an investigator’s week. A claim
+          routed to the wrong adjuster. A loan denial nobody can explain. In
+          those settings a model isn’t a leaderboard entry — it’s someone’s
+          workflow, and sometimes someone’s outcome.
         </p>
         <p>
-          A Computer Science Master’s sharpened that instinct into engineering
-          discipline. I came to love the full arc of a data product: ingesting
-          raw events, shaping them into clean, well-modeled datasets, and
-          serving them back as reliable, analytics-ready data teams can build on.
+          Over three years across <span class="text-text">insurance and financial services</span>,
+          that shaped how I work. At Mphasis I built transaction-monitoring and
+          fraud models over card payments, lifting confirmed-fraud recall by 16%
+          while cutting false-positive alerts by 13%. At Allstate I work on
+          claims routing at roughly 150K claims a month, plus Generative AI
+          tooling that helps adjusters find the guidance they need faster.
         </p>
         <p>
-          Today I work across <span class="text-text">data engineering, analytics, and machine learning</span> —
-          the end-to-end work that turns a clever idea into a dependable,
-          data-driven product.
+          The thread through all of it is <span class="text-text">evaluation I can defend</span> —
+          leakage-free validation, SHAP explanations, calibration, and
+          human-in-the-loop review — paired with a Computer Science Master’s
+          that keeps me honest about the engineering underneath.
         </p>
       </div>
 
@@ -74,12 +75,12 @@ const philosophy = [
           <Badge variant="accent">Education</Badge>
           <h3 class="mt-4 text-xl font-semibold">M.S. Computer Science</h3>
           <p class="mt-1 text-sm text-muted">
-            Florida Atlantic University · Boca Raton, FL
+            Florida Atlantic University · USA
           </p>
           <p class="mt-4 text-sm leading-relaxed text-muted">
-            Graduated with a 3.96 GPA, focused on machine learning, data
-            systems, and applied analytics — backed by a B.E. in Computer
-            Engineering.
+            Graduated May 2026 with a 3.96 GPA, focused on machine learning,
+            applied statistics, and data systems — backed by a B.E. in Computer
+            Engineering (GPA 3.70).
           </p>
           <dl class="mt-6 grid grid-cols-2 gap-4 border-t border-border pt-6">
             <div>
@@ -121,35 +122,6 @@ const philosophy = [
 
   <ExperienceTimeline />
 
-  <!-- Leadership -->
-  {
-    leadership.length > 0 && (
-      <Section
-        kicker="Leadership"
-        title="Beyond the code"
-        intro="Mentoring, community, and student leadership."
-      >
-        <div class="mt-12 grid gap-4 md:grid-cols-2">
-          {leadership.map((l) => (
-            <div data-reveal>
-              <GlowCard class="h-full">
-                <div class="flex items-center gap-3">
-                  <span class="grid size-10 place-items-center rounded-lg border border-border bg-surface-3 text-violet-400">
-                    <Icon name="arrowUpRight" class="size-5" />
-                  </span>
-                  <span class="font-mono text-xs text-faint">{l.period}</span>
-                </div>
-                <h3 class="mt-4 text-lg font-semibold">{l.title}</h3>
-                <p class="text-sm text-muted">{l.org}</p>
-                <p class="mt-2 text-sm leading-relaxed text-muted">{l.summary}</p>
-              </GlowCard>
-            </div>
-          ))}
-        </div>
-      </Section>
-    )
-  }
-
   <!-- Certifications -->
   <Section
     kicker="Credentials"
@@ -187,7 +159,8 @@ const philosophy = [
       <GlowCard class="text-center" noLift>
         <h2 class="text-2xl font-semibold sm:text-3xl">Let’s build something with data</h2>
         <p class="mx-auto mt-3 max-w-lg text-muted">
-          I’m open to data science, machine learning, and data engineering roles.
+          I’m targeting Data Scientist roles where I can build practical machine
+          learning and Generative AI solutions that improve operational decisions.
         </p>
         <div class="mt-7 flex flex-wrap justify-center gap-3">
           <Button href="/contact" size="lg" icon="arrowRight">Get in touch</Button>

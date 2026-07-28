@@ -5,51 +5,51 @@
 export type Expertise = {
   title: string;
   blurb: string;
-  icon: 'pipeline' | 'ml' | 'ai' | 'analytics' | 'database' | 'fullstack';
+  icon: 'analytics' | 'ml' | 'ai' | 'shield' | 'pipeline' | 'database';
   skills: string[];
 };
 
 export const expertise: Expertise[] = [
   {
-    title: 'Data Engineering',
+    title: 'Data Analysis & Feature Engineering',
     blurb:
-      'ETL/ELT pipelines that turn raw, semi-structured data into clean, model-ready datasets at scale.',
-    icon: 'pipeline',
-    skills: ['Python', 'Databricks', 'AWS S3 / Glue', 'Apache Airflow', 'PySpark', 'dbt', 'FastAPI'],
-  },
-  {
-    title: 'Databases',
-    blurb:
-      'Modeling and querying relational and document stores that power analytics, applications, and reporting layers.',
-    icon: 'database',
-    skills: ['PostgreSQL', 'MongoDB', 'Advanced SQL', 'Data Modeling', 'Snowflake', 'Redshift'],
-  },
-  {
-    title: 'Data Science',
-    blurb:
-      'Statistics, experimentation, and forecasting that surface real signal from noisy, real-world data.',
+      'Exploring messy, real-world records and engineering the features that actually carry signal into a model.',
     icon: 'analytics',
-    skills: ['A/B Testing', 'ARIMA', 'K-Means', 'PCA', 'Hypothesis Testing', 'Pandas'],
+    skills: ['Pandas', 'NumPy', 'PySpark', 'EDA', 'Feature Engineering', 'Statistical Analysis'],
   },
   {
-    title: 'Analytics & Visualization',
+    title: 'Machine Learning & Predictive Modeling',
     blurb:
-      'Turning analysis into clear, decision-ready dashboards and visuals that stakeholders actually understand and use.',
-    icon: 'fullstack',
-    skills: ['Tableau', 'Streamlit', 'Seaborn', 'Power BI'],
-  },
-  {
-    title: 'Machine Learning',
-    blurb:
-      'Supervised models tuned and explained to perform reliably on real, imbalanced, messy data.',
+      'Classification, anomaly detection, fraud, and credit-risk models tuned to perform on imbalanced production data.',
     icon: 'ml',
-    skills: ['Scikit-Learn', 'XGBoost', 'Random Forest', 'Feature Engineering', 'Model Evaluation'],
+    skills: ['Scikit-learn', 'XGBoost', 'LightGBM', 'Random Forest', 'Optuna', 'Anomaly Detection'],
   },
   {
-    title: 'AI & MLOps',
+    title: 'Generative AI & LLM Engineering',
     blurb:
-      'Deploying, versioning, and monitoring models through reproducible, production-grade cloud workflows and CI/CD pipelines.',
+      'Retrieval-augmented systems and agentic workflows that ground language models in real, cited source documents.',
     icon: 'ai',
-    skills: ['AWS SageMaker', 'Docker', 'MLflow', 'CI/CD', 'Kubernetes', 'Model Monitoring', 'LLM', 'RAG'],
+    skills: ['Azure OpenAI', 'RAG', 'Prompt Engineering', 'Vector Embeddings', 'Agentic Workflows'],
+  },
+  {
+    title: 'Model Evaluation & Responsible AI',
+    blurb:
+      'Leakage-free validation, explainability, and drift monitoring — proving a model works and that it can be trusted.',
+    icon: 'shield',
+    skills: ['SHAP', 'Cross-Validation', 'ROC-AUC / PR-AUC', 'Calibration', 'Drift', 'Fairness Testing'],
+  },
+  {
+    title: 'MLOps & Deployment',
+    blurb:
+      'Taking models out of notebooks: tracked experiments, versioned releases, scheduled scoring, and monitored endpoints.',
+    icon: 'pipeline',
+    skills: ['MLflow', 'Model Registry', 'Apache Airflow', 'Docker', 'REST APIs', 'CI/CD'],
+  },
+  {
+    title: 'Cloud Platforms & Visualization',
+    blurb:
+      'Azure-first ML platforms plus the dashboards and reporting that put results in front of decision-makers.',
+    icon: 'database',
+    skills: ['Azure ML', 'Azure Databricks', 'Apache Spark', 'PostgreSQL', 'Power BI', 'Streamlit'],
   },
 ];

@@ -9,6 +9,12 @@ import { site, socials } from '@/lib/site';
 
 const methods = [
   { label: 'Email', value: site.email, href: `mailto:${site.email}`, icon: 'email' as const },
+  {
+    label: 'Phone',
+    value: site.phone,
+    href: `tel:${site.phone.replace(/[^\d+]/g, '')}`,
+    icon: 'phone' as const,
+  },
   ...socials
     .filter((s) => s.icon !== 'email')
     .map((s) => ({
@@ -27,7 +33,7 @@ const methods = [
   <PageHero
     kicker="Communication Hub"
     title="Let’s connect"
-    intro="Open to data science, machine learning, and data engineering roles. Send a signal — I respond to every message."
+    intro="Open to Data Scientist roles in machine learning and Generative AI. Send a signal — I respond to every message."
   />
 
   <section class="pb-24">
@@ -39,7 +45,7 @@ const methods = [
             methods.map((m) => (
               <a
                 href={m.href}
-                target={m.icon === 'email' ? undefined : '_blank'}
+                target={m.icon === 'email' || m.icon === 'phone' ? undefined : '_blank'}
                 rel="noopener noreferrer"
                 class="group flex items-center gap-4 rounded-[var(--radius-card)] border border-border bg-surface-2/50 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/40"
               >

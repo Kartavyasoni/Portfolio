@@ -10,51 +10,61 @@ export type TimelineEntry = {
   title: string;
   org: string;
   summary: string;
+  /** Longer bullet list shown on the full About-page timeline. */
+  highlights?: string[];
   /** Show in the compact home preview. */
   featured?: boolean;
 };
 
 export const timeline: TimelineEntry[] = [
   {
+    kind: 'experience',
+    period: 'Feb 2026 — Present',
+    title: 'AI Data Scientist',
+    org: 'The Allstate Corporation · USA',
+    summary:
+      'Building claims-routing models and Generative AI tooling for insurance operations, with leakage-safe training data and human-in-the-loop validation.',
+    highlights: [
+      'Built claims-reassignment training data from policy, loss, and customer-contact systems at ~150K claims/month, using only fields available at reassignment time to prevent leakage from downstream repair and payment records.',
+      'Engineered severity, documentation, dispute, and workload features, improving macro-averaged routing recall by 12% relative to the rules-based baseline on an out-of-time holdout.',
+      'Trained XGBoost and LightGBM models, using SHAP to explain route recommendations and identify claim characteristics influencing adjuster assignment.',
+      'Built an Azure OpenAI retrieval prototype that summarized claim notes and surfaced policy guidance, reducing median manual review time by 18%.',
+      'Created human-reviewed communication drafts with prompt templates, factual checks, and PII masking, keeping adjusters responsible for final customer messages.',
+      'Supported model validation and experiment tracking in Azure Machine Learning and MLflow, documenting performance, limitations, and reviewer approvals before controlled pilot testing.',
+    ],
+    featured: true,
+  },
+  {
+    kind: 'experience',
+    period: 'Jan 2022 — Jun 2024',
+    title: 'Data Scientist',
+    org: 'Mphasis · India',
+    summary:
+      'Built transaction-monitoring and fraud detection systems over card payments, lifting confirmed-fraud recall by 16% while cutting false-positive alerts by 13%.',
+    highlights: [
+      'Built transaction-monitoring datasets from card payments, merchant activity, device signals, and account histories using PySpark and Spark SQL.',
+      'Investigated suspicious behavior through velocity checks, merchant clustering, and sequence analysis, helping analysts identify coordinated fraud patterns.',
+      'Prevented data leakage by excluding post-investigation fields, using out-of-time validation, and fitting preprocessing only within cross-validation folds.',
+      'Improved confirmed-fraud recall by 16% over the legacy rules baseline using Random Forest, Isolation Forest, class weighting, and threshold optimization.',
+      'Reduced false-positive alerts by 13% across three monthly review cycles using segment-specific decision thresholds.',
+      'Developed Power BI dashboards showing alert volumes, fraud trends, investigator outcomes, and model stability for weekly risk and operations reviews.',
+      'Operationalized batch scoring through Airflow, Docker, AWS, and REST APIs, enabling scheduled fraud detection and versioned releases.',
+    ],
+    featured: true,
+  },
+  {
     kind: 'education',
     period: '2024 — 2026',
     title: 'M.S. Computer Science',
-    org: 'Florida Atlantic University · Boca Raton, FL',
-    summary:
-      'GPA 3.96. Focused on data systems, distributed computing, and large-scale analytics.',
+    org: 'Florida Atlantic University · USA',
+    summary: 'GPA 3.96. Focused on machine learning, applied statistics, and data systems.',
     featured: true,
-  },
-  {
-    kind: 'leadership',
-    period: '2025 — 2026',
-    title: 'Governor, Student Government',
-    org: 'Florida Atlantic University · Davie, FL',
-    summary:
-      'Led a 7-person Agile team serving 5,000+ students and optimized a $300K budget with time-series forecasting, cutting fiscal variance by 8%.',
-    featured: true,
-  },
-  {
-    kind: 'experience',
-    period: 'Dec 2023 — Jun 2024',
-    title: 'Machine Learning Engineer',
-    org: 'Unified Mentor · Gurugram, India',
-    summary:
-      'Built a data observability framework that cut production pipeline incidents by 40%, and designed scalable AWS data pipelines with automated monitoring and quality gates.',
-    featured: true,
-  },
-  {
-    kind: 'experience',
-    period: 'Aug 2023 — Nov 2023',
-    title: 'Data Science Intern',
-    org: 'Remote',
-    summary:
-      'Architected AWS S3/Glue pipelines (−18% missing values), optimized 10M+ records with vectorized Pandas, and tuned Scikit-Learn classifiers to a 0.94 F1-score.',
   },
   {
     kind: 'education',
     period: '2020 — 2024',
     title: 'B.E. Computer Engineering',
-    org: 'Gujarat Technological University · Ahmedabad, India',
-    summary: 'GPA 3.70. Foundations in algorithms, systems, and software engineering.',
+    org: 'Gujarat Technological University · India',
+    summary: 'GPA 3.70. Foundations in algorithms, databases, and software engineering.',
   },
 ];

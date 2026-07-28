@@ -4,7 +4,7 @@ const res = await fetch(URL + '/api/contact', {
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
     name: 'Portfolio Test (Claude)',
-    email: 'sonikartavya2003@outlook.com',
+    email: 'kartavya.soni.369@gmail.com',
     message: 'This is an automated end-to-end test of your live contact form. If you received this in your Outlook inbox, the Resend integration is working correctly. You can ignore/delete this message.',
   }),
 });

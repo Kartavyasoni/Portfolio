@@ -1,5 +1,5 @@
 const URL = process.argv[2];
-const NEEDLE = 'sonikartavya2003@outlook.com';
+const NEEDLE = 'kartavya.soni.369@gmail.com';
 const deadline = Date.now() + 180000; // 3 min
 let live = false;
 process.stdout.write('Waiting for redeploy');

@@ -7,14 +7,15 @@ export const site = {
   name: 'Kartavya Soni',
   // Short brand mark used in the nav / logo.
   brand: 'KS',
-  role: 'Data Scientist · ML Engineer',
+  role: 'Data Scientist · AI & ML',
   headline: 'Transforming Raw Data into Production-Ready Intelligence',
   subheadline:
-    'Computer Science Master’s graduate from Florida Atlantic University building intelligent systems that transform data into actionable insights, reliable solutions, and real-world impact.',
+    'Data Scientist with 3 years of experience across insurance and financial services — building predictive models, Generative AI solutions, and responsible ML systems that improve real operational decisions.',
   description:
-    'Personal portfolio of Kartavya Soni — Data Scientist and ML Engineer working across data engineering, analytics, machine learning, and AI to turn raw data into production-ready intelligence.',
+    'Personal portfolio of Kartavya Soni — Data Scientist with 3 years of experience in insurance and financial services, building predictive models, Generative AI solutions, and responsible ML systems.',
   url: 'https://kartavyasoni.vercel.app',
-  email: 'sonikartavya2003@outlook.com',
+  email: 'kartavya.soni.369@gmail.com',
+  phone: '(561) 463-4353',
   location: 'Florida, USA',
   // Served from /public — update this path if you rename the file.
   resume: '/Kartavya_Soni_Resume.pdf',

@@ -1,54 +1,66 @@
 ---
-title: 'Loan Meter: Financial Risk Engine'
-description: An explainable credit-risk model that predicts loan default on highly imbalanced data and returns regulator-friendly reason codes for every decision.
+title: 'Loan Meter: Financial Risk Prediction Engine'
+description: An explainable credit-risk model that predicts loan default on highly imbalanced data and returns SHAP-based reason codes for every individual decision.
 category: Machine Learning
-tags: [classification, explainability, etl, risk]
-techStack: [XGBoost, Python, Pandas, SHAP, Bayesian Optimization]
+tags: [classification, explainability, credit-risk, imbalanced-data]
+techStack: [Python, Pandas, XGBoost, Bayesian Optimization, SHAP]
 problem: >
-  Lenders need to predict default risk on heavily imbalanced data (roughly 10
-  good loans per bad one) while staying transparent — a black-box score that
-  can't explain a denial is a regulatory and trust problem.
+  Lenders need to separate higher-risk applicants on heavily imbalanced data
+  (roughly 10 good loans per bad one) while staying transparent — a black-box
+  score that can't explain a denial is a compliance and trust problem.
 solution: >
-  I built a credit-risk engine: a Pandas ETL pipeline that cleans 200k+ records,
-  an XGBoost classifier tuned with Bayesian search and cost-sensitive learning
-  for the imbalance, and SHAP-based reason codes that explain every individual
-  decision.
+  A credit-risk engine built on reproducible Pandas preprocessing over 200,000+
+  loan records, an XGBoost classifier tuned via Bayesian search, cost-sensitive
+  learning to handle the 10:1 imbalance, and SHAP reason codes that explain each
+  individual prediction for reviewers and auditors.
 architecture: >
-  Pandas ETL on 200k+ records (automated outlier detection + missing-data
-  handling) → engineered feature pipeline → XGBoost tuned via Bayesian
-  hyperparameter search → cost-sensitive learning to counter the 10:1 class
-  imbalance → SHAP reason codes attached to each prediction.
+  Pandas pipelines process 200,000+ loan records with missing-value treatment,
+  outlier controls, and feature validation → reproducible preprocessing →
+  XGBoost credit-risk classifier tuned through Bayesian search → cost-sensitive
+  learning counters the 10:1 class imbalance → SHAP reason codes attached to
+  every individual prediction for compliance and audit review.
 results:
-  - Achieved 0.76 ROC-AUC while prioritizing precision on approvals
-  - Improved minority-class (default) recall by 14% with cost-sensitive learning
-  - Automated outlier detection and missing-data handling across 200k+ records
-  - Delivered SHAP reason codes for every denial, supporting regulatory alignment
+  - Achieved 0.76 ROC-AUC on held-out data, improving separation of higher-risk applicants
+  - Increased minority-class recall by 14% with cost-sensitive learning while preserving approval precision
+  - Processed 200,000+ loan records through reproducible, validated preprocessing pipelines
+  - Generated SHAP reason codes per prediction, supporting transparent compliance and audit documentation
 github: https://github.com/Kartavyasoni
 featured: true
-order: 2
+order: 3
 publishedAt: 2025-02-01
 ---
 
 ## Overview
 
-Loan Meter is a credit-risk model designed for the real world: imbalanced data,
-a hard precision requirement, and a regulatory need to **explain every
-decision** — not just produce a score.
+Loan Meter is a credit-risk model built for the real constraints of lending:
+heavily imbalanced data, a hard precision requirement on approvals, and a
+regulatory need to **explain every individual decision** — not just produce a
+score.
+
+## Reproducible preprocessing first
+
+Before any modeling, **200,000+ loan records** run through Pandas pipelines
+handling missing-value treatment, outlier controls, and feature validation. The
+preprocessing is reproducible by design, so results can be regenerated and
+defended later.
 
 ## Handling imbalance honestly
 
-With a ~10:1 class imbalance, naive accuracy is meaningless. I used
-**cost-sensitive learning** to make the model pay attention to the rare default
-class, lifting minority-class recall by 14% without collapsing precision.
+With a ~**10:1 class imbalance**, raw accuracy is meaningless. **Cost-sensitive
+learning** made the model attend to the rare default class, **lifting
+minority-class recall by 14%** over a standard-threshold baseline — while
+preserving approval precision, which is the metric the business actually cares
+about.
 
-## Tuning for the right metric
+## Tuned for the right metric
 
-The XGBoost classifier was tuned with **Bayesian hyperparameter search** toward
-ROC-AUC and precision on approvals — reaching 0.76 ROC-AUC while keeping
-false approvals low.
+The XGBoost classifier was optimized through **Bayesian search**, reaching
+**0.76 ROC-AUC** on held-out data with better separation of higher-risk
+applicants.
 
 ## Explainability as a requirement
 
-Every prediction carries **SHAP reason codes** — *"income-to-debt ratio,
-recent delinquencies"* — so a denial can be explained to an applicant and a
-regulator. Transparency was a design constraint, not an afterthought.
+Every prediction carries **SHAP-based reason codes**, helping reviewers
+understand the drivers behind a default prediction and supporting transparent
+model documentation for compliance and audit discussions. Explainability was a
+design constraint, not an afterthought.

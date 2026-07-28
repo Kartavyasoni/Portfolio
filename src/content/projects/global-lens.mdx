@@ -1,54 +1,59 @@
 ---
-title: 'Global Lens: A Clearer View of Global Progress'
-description: An analytics platform that ingests 16k+ global development indicators and turns them into country clusters, GDP forecasts, and interactive what-if scenarios.
+title: 'Global Lens: Global Economic Progress Analysis'
+description: An analytics platform that ingests 1,000+ global development indicators and turns them into economic country profiles, GDP forecasts, and interactive scenario comparisons.
 category: Data Science
-tags: [forecasting, clustering, etl, dashboard]
-techStack: [Scikit-Learn, FastAPI, Streamlit, ARIMA, Pandas, Docker]
+tags: [forecasting, clustering, analytics, dashboard]
+techStack: [Python, FastAPI, Scikit-learn, ARIMA, Streamlit, Docker]
 problem: >
-  Global development data is scattered across thousands of indicators and
-  sources, making it slow and painful to compare countries, spot economic
-  patterns, or project where a country is heading.
+  Global development data is spread across thousands of indicators and slow APIs,
+  making it painful to compare countries, spot economic patterns, or project
+  where an economy is heading without weeks of manual data wrangling.
 solution: >
-  I built an end-to-end analytics platform: a FastAPI ETL pipeline that ingests
-  16k+ indicators behind a caching layer, an unsupervised engine that segments
-  countries into economic archetypes, ARIMA models that forecast GDP, and a
-  Streamlit dashboard for interactive exploration.
+  An end-to-end analytics platform: a Python and FastAPI ingestion pipeline with
+  response caching, unsupervised clustering that groups countries into economic
+  profiles, ARIMA models that forecast GDP with rolling-window validation, and a
+  Dockerized Streamlit dashboard for interactive scenario comparison.
 architecture: >
-  FastAPI ETL ingests 16k+ indicators → caching layer cuts repeat latency by
-  60% → PCA + K-Means segment countries into 5 economic archetypes → ARIMA
-  models with rolling-window cross-validation forecast GDP → a Dockerized
-  Streamlit dashboard serves clusters, forecasts, and live "What-If" scenarios.
+  Python + FastAPI ingestion pipeline pulls 1,000+ global indicators → response
+  caching cuts median API latency by 60% → PCA + K-Means group countries into
+  five economic profiles → ARIMA models with rolling-window validation forecast
+  GDP → a Dockerized Streamlit dashboard exposes scenario controls for comparing
+  countries, indicators, forecasts, and cluster profiles.
 results:
-  - Reduced data-access latency by 60% with a caching layer over the ETL pipeline
-  - Identified 5 distinct global economic archetypes via PCA + K-Means
-  - Improved GDP forecast accuracy (MAPE) by 12% with rolling-window validation
-  - Shipped a Dockerized dashboard enabling real-time "What-If" scenario analysis
+  - Reduced median API latency by 60% versus uncached requests with a response caching layer
+  - Grouped countries into five economic profiles using PCA and K-Means for cross-region comparison
+  - Reduced GDP forecast MAPE by 12% relative to a historical-average baseline
+  - Deployed a Dockerized Streamlit dashboard with interactive scenario controls
 github: https://github.com/Kartavyasoni
 featured: true
-order: 1
+order: 2
 publishedAt: 2025-04-01
 ---
 
 ## Overview
 
-Global Lens turns an overwhelming, fragmented dataset into something a person
-can actually reason about — clusters that group similar economies, forecasts
-that project where they're heading, and a dashboard to ask "what if?".
+Global Lens turns a sprawling, slow-to-query set of development indicators into
+something you can actually reason about — economic profiles that group similar
+countries, forecasts that project where they're heading, and a dashboard for
+asking "what if?".
 
-## From raw indicators to insight
+## Ingestion that stays fast
 
-The hardest part wasn't the modeling — it was the **data plumbing**. A FastAPI
-ETL pipeline ingests 16k+ indicators, and a caching layer cut repeat-query
-latency by 60%, which made interactive exploration feel instant.
+A **Python and FastAPI** pipeline ingests **1,000+ global indicators**. The
+bottleneck wasn't modeling — it was waiting on upstream APIs, so I added a
+response caching layer that **cut median API latency by 60%**, which is what made
+interactive exploration feel instant instead of sluggish.
 
-## Segmentation & forecasting
+## Profiles and forecasts
 
 - **PCA + K-Means** reduced dozens of correlated indicators into a handful of
-  components and grouped countries into 5 interpretable economic archetypes.
-- **ARIMA** models, validated with rolling-window cross-validation, improved GDP
-  forecast accuracy (MAPE) by 12% over a naive baseline.
+  components and grouped countries into **five economic profiles**, enabling
+  comparisons across regions, income levels, and long-term development patterns.
+- **ARIMA** models with **rolling-window validation** reduced GDP forecast
+  **MAPE by 12%** against a historical-average baseline across evaluated periods.
 
 ## Delivery
 
-The whole thing ships as a **Dockerized Streamlit app**, so analysts can run
-live "What-If" scenarios on the global clusters without touching a notebook.
+The whole thing ships as a **Dockerized Streamlit dashboard** with scenario
+controls, so a user can compare countries, indicators, forecasts, and cluster
+profiles through one interactive interface — no notebook required.
