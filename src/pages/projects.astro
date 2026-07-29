@@ -36,8 +36,10 @@ const presentCategories = PROJECT_CATEGORIES.filter((c) =>
     intro="Systems built to run in production — filter by the kind of problem they solve."
   />
 
-  <section class="pb-24">
+  <section class="pb-24" aria-labelledby="all-projects">
     <Container>
+      {/* The cards are h3s; without this the outline skips h1 -> h3. */}
+      <h2 id="all-projects" class="sr-only">All projects</h2>
       <ProjectsGallery
         client:load
         projects={cards}

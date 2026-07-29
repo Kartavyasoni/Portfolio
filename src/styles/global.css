@@ -244,6 +244,27 @@
   .glow-halo {
     background: radial-gradient(circle at center, var(--glow) 0%, transparent 70%);
   }
+
+  /* Flowing dashes in the project architecture sketches. Global (rather than
+     component-scoped) so the Astro card and the React gallery share it. */
+  .schematic-dash {
+    animation: dash-flow 1.4s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .schematic-dash {
+      animation: none;
+    }
+  }
+}
+
+@keyframes dash-flow {
+  from {
+    stroke-dashoffset: 20;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 /* Scroll-reveal targets start hidden only when JS can animate them in.

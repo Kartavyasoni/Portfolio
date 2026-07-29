@@ -1,9 +1,11 @@
 ---
 /**
  * Per-project architecture sketch shown in the card preview.
- * Each diagram mirrors that project's actual pipeline rather than a generic
- * placeholder, so the preview carries real information.
+ * Diagram markup lives in @/lib/project-diagrams so the React gallery island
+ * renders exactly the same picture.
  */
+import { getProjectDiagram } from '@/lib/project-diagrams';
+
 interface Props {
   /** Project slug — falls back to a generic pipeline for unknown ids. */
   id: string;
@@ -11,76 +13,6 @@ interface Props {
 }
 
 const { id, class: className } = Astro.props;
-
-// document -> chunks -> vector store -> ranked passages -> cited answer
-const filingQa = `
-  <rect x="24" y="58" width="46" height="62" rx="6" stroke-width="1.5"/>
-  <path d="M34 74h26M34 86h26M34 98h16" stroke-width="1.5" opacity=".7"/>
-  <path class="dash" d="M76 89h30" stroke-width="1.5" stroke-dasharray="4 6"/>
-  <rect x="110" y="60" width="42" height="16" rx="4" stroke-width="1.5"/>
-  <rect x="110" y="81" width="42" height="16" rx="4" stroke-width="1.5" opacity=".8"/>
-  <rect x="110" y="102" width="42" height="16" rx="4" stroke-width="1.5" opacity=".6"/>
-  <path class="dash" d="M158 89h26" stroke-width="1.5" stroke-dasharray="4 6"/>
-  <ellipse cx="212" cy="66" rx="24" ry="8" stroke-width="1.5"/>
-  <path d="M188 66v46c0 4.4 10.7 8 24 8s24-3.6 24-8V66" stroke-width="1.5"/>
-  <path class="dash" d="M242 89h28" stroke-width="1.5" stroke-dasharray="4 6"/>
-  <rect x="274" y="62" width="54" height="10" rx="3" stroke-width="1.5"/>
-  <rect x="274" y="80" width="44" height="10" rx="3" stroke-width="1.5" opacity=".75"/>
-  <rect x="274" y="98" width="34" height="10" rx="3" stroke-width="1.5" opacity=".5"/>
-  <path class="dash" d="M334 89h20" stroke-width="1.5" stroke-dasharray="4 6"/>
-  <circle cx="366" cy="89" r="7" fill="currentColor"/>
-`;
-
-// indicator clusters -> trend line with dashed forecast
-const globalLens = `
-  <circle cx="62" cy="58" r="26" stroke-width="1.2" stroke-dasharray="3 4" opacity=".55"/>
-  <circle cx="54" cy="52" r="3" fill="currentColor"/>
-  <circle cx="68" cy="48" r="3" fill="currentColor"/>
-  <circle cx="60" cy="66" r="3" fill="currentColor"/>
-  <circle cx="72" cy="62" r="3" fill="currentColor"/>
-  <circle cx="118" cy="120" r="30" stroke-width="1.2" stroke-dasharray="3 4" opacity=".55"/>
-  <circle cx="110" cy="112" r="3" fill="currentColor"/>
-  <circle cx="126" cy="116" r="3" fill="currentColor"/>
-  <circle cx="116" cy="130" r="3" fill="currentColor"/>
-  <circle cx="130" cy="127" r="3" fill="currentColor"/>
-  <path d="M190 142h178M190 142V38" stroke-width="1.5" opacity=".55"/>
-  <path d="M198 126l26-10 26 6 26-22 26 8" stroke-width="2"/>
-  <path class="dash" d="M302 108l28-20 28-24" stroke-width="2" stroke-dasharray="5 5"/>
-  <circle cx="358" cy="64" r="5" fill="currentColor"/>
-`;
-
-// record funnel -> model -> risk gauge with reason codes
-const loanMeter = `
-  <rect x="26" y="50" width="68" height="10" rx="3" stroke-width="1.4"/>
-  <rect x="32" y="68" width="56" height="10" rx="3" stroke-width="1.4" opacity=".8"/>
-  <rect x="38" y="86" width="44" height="10" rx="3" stroke-width="1.4" opacity=".6"/>
-  <rect x="44" y="104" width="32" height="10" rx="3" stroke-width="1.4" opacity=".45"/>
-  <path class="dash" d="M100 82h30" stroke-width="1.5" stroke-dasharray="4 6"/>
-  <rect x="134" y="56" width="62" height="52" rx="10" stroke-width="1.5"/>
-  <path d="M148 82h12M166 72v20M176 82h8" stroke-width="1.5" opacity=".8"/>
-  <path class="dash" d="M200 82h30" stroke-width="1.5" stroke-dasharray="4 6"/>
-  <path d="M244 116a52 52 0 0 1 104 0" stroke-width="2"/>
-  <path d="M296 116l32-26" stroke-width="2"/>
-  <circle cx="296" cy="116" r="4" fill="currentColor"/>
-  <path d="M252 98l7 5M296 64v9M340 98l-7 5" stroke-width="1.4" opacity=".6"/>
-`;
-
-// neutral fallback for any project added later
-const generic = `
-  <path class="dash" d="M40 90h70M150 90h70M290 90h70" stroke-width="1.5" stroke-dasharray="4 6"/>
-  <rect x="110" y="70" width="40" height="40" rx="8" stroke-width="1.5"/>
-  <rect x="220" y="70" width="40" height="40" rx="8" stroke-width="1.5"/>
-  <circle cx="40" cy="90" r="6" fill="currentColor"/>
-  <circle cx="360" cy="90" r="6" fill="currentColor"/>
-`;
-
-const diagrams: Record<string, string> = {
-  'filing-qa': filingQa,
-  'global-lens': globalLens,
-  'loan-meter': loanMeter,
-};
-
-const diagram = diagrams[id] ?? generic;
 ---
 
 <svg
@@ -91,27 +23,5 @@ const diagram = diagrams[id] ?? generic;
   stroke-linecap="round"
   stroke-linejoin="round"
   aria-hidden="true"
-  set:html={diagram}
+  set:html={getProjectDiagram(id)}
 />
-
-<style>
-  .dash {
-    animation: dash-flow 1.4s linear infinite;
-  }
-
-  @keyframes dash-flow {
-    from {
-      stroke-dashoffset: 20;
-    }
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  /* Honour the user's motion preference — the diagram still reads statically. */
-  @media (prefers-reduced-motion: reduce) {
-    .dash {
-      animation: none;
-    }
-  }
-</style>
