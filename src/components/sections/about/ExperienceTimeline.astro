@@ -35,9 +35,13 @@ const kindStyles: Record<TimelineKind, { dot: string; label: string }> = {
             </div>
             <h3 class="mt-2 text-xl font-semibold">{entry.title}</h3>
             <p class="text-sm text-muted">{entry.org}</p>
-            <p class="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-              {entry.summary}
-            </p>
+            {/* The summary is the compact home-page blurb; where detailed
+                highlights exist it just repeats them, so show one or the other. */}
+            {!entry.highlights && (
+              <p class="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+                {entry.summary}
+              </p>
+            )}
             {entry.highlights && (
               <ul class="mt-4 flex max-w-2xl flex-col gap-2">
                 {entry.highlights.map((h) => (

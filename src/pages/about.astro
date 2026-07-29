@@ -46,7 +46,9 @@ const philosophy = [
   <Section container="default">
     <div class="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-start">
       <div data-reveal class="flex flex-col gap-5 text-base leading-relaxed text-muted">
-        <span class="kicker">The Story</span>
+        {/* A real heading, not a styled span — otherwise the education card's
+            h3 below skips straight from the page h1. */}
+        <h2 class="kicker font-normal">The Story</h2>
         <p>
           I got into data science through problems where being wrong is
           expensive. Fraud alerts that waste an investigator’s week. A claim
@@ -128,7 +130,8 @@ const philosophy = [
     title="Certifications"
     intro="Continued learning, verified."
   >
-    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <!-- Two certs: a 2-col grid fills the row instead of leaving empty cells. -->
+    <div class="mt-12 grid gap-4 sm:grid-cols-2">
       {
         certifications.map((cert) => (
           <div data-reveal>
