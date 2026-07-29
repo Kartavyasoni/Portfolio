@@ -36,7 +36,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     kind: 'education',
-    period: '2024 — 2026',
+    period: 'Aug 2024 — May 2026',
     title: 'M.S. Computer Science',
     org: 'Florida Atlantic University · USA',
     summary: 'GPA 3.96. Focused on machine learning, applied statistics, and data systems.',
@@ -62,7 +62,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     kind: 'education',
-    period: '2020 — 2024',
+    period: 'Aug 2020 — May 2024',
     title: 'B.E. Computer Engineering',
     org: 'Gujarat Technological University · India',
     summary: 'GPA 3.70. Foundations in algorithms, databases, and software engineering.',
