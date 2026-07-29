@@ -1,9 +1,11 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
+type FieldName = 'name' | 'email' | 'message';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const ERROR_ID = 'contact-form-error';
 
 const fieldBase =
   'w-full rounded-lg border border-border bg-surface-2/60 px-4 py-3 text-sm text-text placeholder:text-faint transition-colors focus:border-accent focus:outline-none';
@@ -11,14 +13,26 @@ const fieldBase =
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string>('');
+  const [errorField, setErrorField] = useState<FieldName | null>(null);
+  const successRef = useRef<HTMLDivElement>(null);
 
-  const validate = (form: HTMLFormElement): string | null => {
+  // Move focus to the confirmation so submitting is announced rather than
+  // silently swapping the form out from under a screen-reader user.
+  useEffect(() => {
+    if (status === 'success') successRef.current?.focus();
+  }, [status]);
+
+  const validate = (
+    form: HTMLFormElement,
+  ): { field: FieldName; message: string } | null => {
     const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
     const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
     const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim();
-    if (!name) return 'Please enter your name.';
-    if (!EMAIL_RE.test(email)) return 'Please enter a valid email address.';
-    if (message.length < 10) return 'Message must be at least 10 characters.';
+    if (!name) return { field: 'name', message: 'Please enter your name.' };
+    if (!EMAIL_RE.test(email))
+      return { field: 'email', message: 'Please enter a valid email address.' };
+    if (message.length < 10)
+      return { field: 'message', message: 'Message must be at least 10 characters.' };
     return null;
   };
 
@@ -29,12 +43,16 @@ export default function ContactForm() {
     const validationError = validate(form);
     if (validationError) {
       setStatus('error');
-      setError(validationError);
+      setError(validationError.message);
+      setErrorField(validationError.field);
+      // Put the cursor on the field that actually needs fixing.
+      (form.elements.namedItem(validationError.field) as HTMLElement | null)?.focus();
       return;
     }
 
     setStatus('submitting');
     setError('');
+    setErrorField(null);
 
     const data = {
       name: (form.elements.namedItem('name') as HTMLInputElement).value,
@@ -66,9 +84,12 @@ export default function ContactForm() {
   if (status === 'success') {
     return (
       <motion.div
+        ref={successRef}
+        role="status"
+        tabIndex={-1}
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center gap-4 rounded-[var(--radius-card)] border border-accent/30 bg-accent/5 p-10 text-center"
+        className="flex flex-col items-center gap-4 rounded-[var(--radius-card)] border border-accent/30 bg-accent/5 p-10 text-center focus:outline-none"
       >
         <span className="grid size-14 place-items-center rounded-full border border-accent/40 bg-accent/10 text-accent">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="size-7" strokeLinecap="round" strokeLinejoin="round">
@@ -76,7 +97,7 @@ export default function ContactForm() {
           </svg>
         </span>
         <div>
-          <h3 className="text-xl font-semibold text-text">Message sent</h3>
+          <h2 className="text-xl font-semibold text-text">Message sent</h2>
           <p className="mt-2 text-sm text-muted">
             Thanks for reaching out — I’ll get back to you soon.
           </p>
@@ -107,13 +128,34 @@ export default function ContactForm() {
           <label htmlFor="name" className="font-mono text-xs uppercase tracking-wider text-muted">
             Name
           </label>
-          <input id="name" name="name" type="text" required maxLength={100} placeholder="Your name" className={fieldBase} />
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            maxLength={100}
+            autoComplete="name"
+            placeholder="Your name"
+            aria-invalid={errorField === 'name'}
+            aria-describedby={errorField === 'name' ? ERROR_ID : undefined}
+            className={fieldBase}
+          />
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-muted">
             Email
           </label>
-          <input id="email" name="email" type="email" required placeholder="you@example.com" className={fieldBase} />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="you@example.com"
+            aria-invalid={errorField === 'email'}
+            aria-describedby={errorField === 'email' ? ERROR_ID : undefined}
+            className={fieldBase}
+          />
         </div>
       </div>
 
@@ -121,7 +163,17 @@ export default function ContactForm() {
         <label htmlFor="message" className="font-mono text-xs uppercase tracking-wider text-muted">
           Message
         </label>
-        <textarea id="message" name="message" required rows={6} maxLength={5000} placeholder="Tell me about the problem you’re solving…" className={`${fieldBase} resize-y`} />
+        <textarea
+          id="message"
+          name="message"
+          required
+          rows={6}
+          maxLength={5000}
+          placeholder="Tell me about the problem you’re solving…"
+          aria-invalid={errorField === 'message'}
+          aria-describedby={errorField === 'message' ? ERROR_ID : undefined}
+          className={`${fieldBase} resize-y`}
+        />
       </div>
 
       <AnimatePresence>
@@ -130,6 +182,7 @@ export default function ContactForm() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            id={ERROR_ID}
             className="text-sm text-red-400"
             role="alert"
           >
@@ -145,7 +198,7 @@ export default function ContactForm() {
       >
         {status === 'submitting' ? (
           <>
-            <span className="size-4 animate-spin rounded-full border-2 border-accent-contrast/40 border-t-accent-contrast" />
+            <span className="size-4 animate-spin rounded-full border-2 border-accent-contrast/40 border-t-accent-contrast motion-reduce:animate-none" />
             Sending…
           </>
         ) : (

@@ -41,6 +41,7 @@ const methods = [
       <div class="grid gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-10">
         <!-- Left: methods + closing -->
         <div class="flex flex-col gap-4" data-reveal>
+          <h2 class="sr-only">Ways to reach me</h2>
           {
             methods.map((m) => (
               <a
@@ -81,7 +82,7 @@ const methods = [
         <!-- Right: form -->
         <div data-reveal>
           <GlowCard noLift class="relative">
-            <span class="kicker">Send a message</span>
+            <h2 class="kicker font-normal">Send a message</h2>
             <p class="mt-2 mb-6 text-sm text-muted">
               Fill in the form and it lands straight in my inbox.
             </p>
