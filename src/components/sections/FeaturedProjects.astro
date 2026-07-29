@@ -13,7 +13,8 @@ const projects = await getFeaturedProjects(4);
   title="Featured Projects"
   intro="A case-study look at systems built to run in production, not just in notebooks."
 >
-  <div class="mt-14 grid gap-5 md:grid-cols-2">
+  <!-- 1 -> 3 columns (skipping 2) so three projects never leave an orphan. -->
+  <div class="mt-14 grid gap-5 lg:grid-cols-3">
     {
       projects.map((project) => (
         <div data-reveal>

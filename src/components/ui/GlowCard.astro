@@ -10,6 +10,9 @@ interface Props {
   noLift?: boolean;
   /** On hover, use a bold accent (blue) border instead of the subtle one. */
   accentHover?: boolean;
+  /** Extra classes for the inner content wrapper — e.g. to make it a
+   *  full-height flex column so children can use `mt-auto`. */
+  contentClass?: string;
 }
 
 const {
@@ -17,6 +20,7 @@ const {
   class: className,
   noLift = false,
   accentHover = false,
+  contentClass,
 } = Astro.props;
 const Tag = href ? 'a' : 'div';
 ---
@@ -41,7 +45,7 @@ const Tag = href ? 'a' : 'div';
   >
   </div>
   <!-- Content -->
-  <div class="relative z-10">
+  <div class:list={['relative z-10', contentClass]}>
     <slot />
   </div>
 </Tag>

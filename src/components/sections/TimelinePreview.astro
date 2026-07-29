@@ -22,7 +22,7 @@ const kindStyles: Record<TimelineKind, { dot: string; label: string }> = {
   title="A path through data and systems"
   intro="Experience and education — the compact version."
 >
-  <div class="mt-14 grid gap-12 lg:grid-cols-[1fr_auto] lg:items-start">
+  <div class="mt-14">
     <ol class="relative ml-3 border-l border-border">
       {
         entries.map((entry) => {
@@ -50,9 +50,13 @@ const kindStyles: Record<TimelineKind, { dot: string; label: string }> = {
         })
       }
     </ol>
+  </div>
 
-    <div class="lg:sticky lg:top-28" data-reveal>
-      <Button href="/about" size="lg" icon="arrowRight">Explore Full Journey</Button>
-    </div>
+  {/* Centred below the timeline, matching the "View All Projects" pattern,
+      instead of stranded beside it in an empty column. */}
+  <div class="mt-12 flex justify-center" data-reveal>
+    <Button href="/about" variant="secondary" size="lg" icon="arrowRight">
+      Explore Full Journey
+    </Button>
   </div>
 </Section>

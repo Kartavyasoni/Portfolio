@@ -35,7 +35,9 @@
   --border-strong: rgba(148, 163, 184, 0.22);
   --text: #e6edf3;
   --text-muted: #94a3b8;
-  --text-faint: #5b6776;
+  /* Tertiary text. Kept at >=4.5:1 on bg/surface-2/surface-3 so chips, dates,
+     and labels stay WCAG AA legible while reading dimmer than --text-muted. */
+  --text-faint: #7d8ca1;
   --accent: var(--brand-500);
   --accent-hover: var(--brand-400);
   --accent-contrast: #ffffff;
@@ -57,7 +59,7 @@
   --border-strong: rgba(15, 23, 42, 0.16);
   --text: #0f172a;
   --text-muted: #475569;
-  --text-faint: #94a3b8;
+  --text-faint: #5b6b82;
   --accent: #2563eb;
   --accent-hover: #1d4ed8;
   --accent-contrast: #ffffff;

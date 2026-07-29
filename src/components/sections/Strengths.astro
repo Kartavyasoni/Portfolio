@@ -25,7 +25,9 @@ import { metrics, pillars } from '@/data/strengths';
                 data-countup-suffix={m.suffix ?? ''}
                 data-countup-decimals={String(m.decimals ?? (Number.isInteger(m.value) ? 0 : 1))}
               >
-                {m.prefix ?? ''}0{m.suffix ?? ''}
+                {/* The real value ships in the HTML so no-JS readers and
+                    crawlers see the number; the script zeroes it to animate. */}
+                {`${m.prefix ?? ''}${m.value.toFixed(m.decimals ?? (Number.isInteger(m.value) ? 0 : 1))}${m.suffix ?? ''}`}
               </span>
             </div>
             <p class="mt-3 text-sm text-muted">{m.label}</p>
@@ -42,7 +44,7 @@ import { metrics, pillars } from '@/data/strengths';
         <div data-reveal>
           <GlowCard class="h-full">
             <div class="flex gap-4">
-              <span class="font-mono text-sm text-accent">0{i + 1}</span>
+              <span class="font-mono text-sm text-brand-400">0{i + 1}</span>
               <div>
                 <h3 class="text-lg font-semibold">{p.title}</h3>
                 <p class="mt-2 text-sm leading-relaxed text-muted">{p.description}</p>
@@ -95,5 +97,16 @@ import { metrics, pillars } from '@/data/strengths';
     { threshold: 0.5 },
   );
 
-  els.forEach((el) => io.observe(el));
+  els.forEach((el) => {
+    // The server rendered the true value (for no-JS and crawlers). Reset it to
+    // zero now — before the card is revealed — so the count-up has somewhere to
+    // travel from without the real number flashing first.
+    if (!prefersReduced) {
+      const prefix = el.dataset.countupPrefix ?? '';
+      const suffix = el.dataset.countupSuffix ?? '';
+      const decimals = parseInt(el.dataset.countupDecimals ?? '0', 10);
+      el.textContent = `${prefix}${(0).toFixed(decimals)}${suffix}`;
+    }
+    io.observe(el);
+  });
 </script>

@@ -30,7 +30,7 @@ const glyphs: Record<string, string> = {
     {
       expertise.map((item) => (
         <div data-reveal>
-          <GlowCard class="h-full" accentHover>
+          <GlowCard class="h-full" accentHover contentClass="flex h-full flex-col">
             <div class="flex items-start justify-between gap-4">
               <span class="grid size-12 place-items-center rounded-xl border border-border bg-surface-3 text-accent transition-colors group-hover/glow:border-accent/40">
                 <svg
@@ -44,9 +44,14 @@ const glyphs: Record<string, string> = {
                 />
               </span>
             </div>
-            <h3 class="mt-5 text-xl font-semibold">{item.title}</h3>
+            {/* min-height reserves two lines so every blurb starts at the
+                same y, and mt-auto drops all chip rows onto a shared baseline. */}
+            <h3 class="mt-5 min-h-[3.5rem] text-xl font-semibold">{item.title}</h3>
             <p class="mt-2 text-sm leading-relaxed text-muted">{item.blurb}</p>
-            <ul class="mt-4 flex flex-wrap gap-1.5">
+            <ul
+              class="mt-auto flex flex-wrap gap-1.5 pt-5"
+              aria-label={`${item.title} technologies`}
+            >
               {item.skills.map((s) => (
                 <li class="rounded-md bg-surface-3 px-2 py-1 font-mono text-[11px] text-faint">
                   {s}

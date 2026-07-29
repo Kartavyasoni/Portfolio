@@ -1,24 +1,22 @@
 ---
 import Container from '@/components/ui/Container.astro';
-import HeroScene from '@/components/three/HeroScene';
+import HeroSceneLazy from '@/components/three/HeroSceneLazy';
 import Icon from '@/components/ui/Icon.astro';
 import { site } from '@/lib/site';
 ---
 
 <section
   class="hero-cinema relative flex min-h-[100svh] items-center overflow-hidden"
+  aria-label="Introduction"
 >
-  <!-- 3D wireframe terrain (browser-only island) -->
-  <div class="pointer-events-none absolute inset-0">
-    <HeroScene client:only="react" />
+  <!-- 3D wireframe terrain — decorative, browser-only, deferred until idle -->
+  <div class="hero-canvas pointer-events-none absolute inset-0" aria-hidden="true">
+    <HeroSceneLazy client:only="react" />
   </div>
 
-  <!-- Readability scrim: darkens behind the centered text -->
-  <div
-    class="pointer-events-none absolute inset-0"
-    style="background: radial-gradient(75% 68% at 50% 46%, rgba(5,7,10,0.82), rgba(5,7,10,0.2) 60%, transparent 78%)"
-  >
-  </div>
+  <!-- Readability scrim: holds the text region dark so the animated mesh
+       never drifts bright lines directly behind the glyphs. -->
+  <div class="hero-scrim pointer-events-none absolute inset-0"></div>
 
   <!-- Bottom fade into the themed page -->
   <div
@@ -44,42 +42,51 @@ import { site } from '@/lib/site';
       </span>
 
       <h1
-        class="mt-7 bg-gradient-to-b from-cyan-300 via-white to-slate-400 bg-clip-text text-[clamp(2.5rem,7vw,5rem)] font-bold leading-[1.03] text-transparent"
+        class="mt-7 text-balance bg-gradient-to-b from-cyan-300 via-white to-slate-300 bg-clip-text text-[clamp(2.15rem,6.4vw,5rem)] font-bold leading-[1.05] text-transparent"
         data-hero-item
       >
-        Transforming Raw Data into Production-Ready Intelligence
+        Transforming Raw Data into <span class="whitespace-nowrap">Production-Ready</span>
+        Intelligence
       </h1>
 
       <p
-        class="mt-7 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
+        class="mt-7 max-w-2xl text-balance text-base leading-relaxed text-slate-300 sm:text-lg"
         data-hero-item
       >
         {site.subheadline}
       </p>
 
-      <div class="mt-10 flex justify-center" data-hero-item>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-3" data-hero-item>
         <a
-          href="/about"
-          class="group/hbtn inline-flex h-14 items-center justify-center gap-2 rounded-lg bg-white px-8 text-sm font-semibold uppercase tracking-wide text-[#05070a] transition-all duration-300 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:shadow-[0_14px_44px_-10px_rgba(255,255,255,0.35)]"
+          href="/projects"
+          class="group/hbtn inline-flex h-14 w-full items-center justify-center gap-2 rounded-lg bg-white px-8 text-sm font-semibold uppercase tracking-wide text-[#05070a] transition-all duration-300 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:shadow-[0_14px_44px_-10px_rgba(255,255,255,0.35)] sm:w-auto"
         >
-          More About Me
+          View Projects
           <Icon
             name="arrowUpRight"
             class="size-4 transition-transform duration-300 group-hover/hbtn:-translate-y-0.5 group-hover/hbtn:translate-x-0.5"
           />
         </a>
+        <a
+          href="/about"
+          class="inline-flex h-14 w-full items-center justify-center rounded-lg border border-white/20 bg-white/[0.06] px-8 text-sm font-semibold uppercase tracking-wide text-white backdrop-blur-sm transition-all duration-300 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:border-white/35 hover:bg-white/[0.12] sm:w-auto"
+        >
+          About Me
+        </a>
       </div>
+
     </div>
   </Container>
 
-  <!-- Scroll cue -->
+  <!-- Scroll cue (desktop only — it crowds the CTA on small screens) -->
   <div
-    class="pointer-events-none absolute inset-x-0 bottom-6 flex justify-center"
+    class="pointer-events-none absolute inset-x-0 bottom-6 hidden justify-center sm:flex"
     data-hero-item
   >
-    <div class="flex flex-col items-center gap-2 text-faint">
+    <div class="flex flex-col items-center gap-2 text-slate-400">
       <span class="font-mono text-[10px] uppercase tracking-[0.2em]">Scroll</span>
-      <span class="h-10 w-px animate-pulse-glow bg-gradient-to-b from-accent to-transparent"
+      <span
+        class="h-10 w-px animate-pulse-glow bg-gradient-to-b from-cyan-300 to-transparent"
       ></span>
     </div>
   </div>
@@ -90,6 +97,44 @@ import { site } from '@/lib/site';
   .hero-cinema {
     background: linear-gradient(180deg, #05070a 0%, #060912 55%, var(--bg) 100%);
     color: #e6edf3;
+  }
+
+  .hero-scrim {
+    background: radial-gradient(
+      72% 64% at 50% 44%,
+      rgba(5, 7, 10, 0.94),
+      rgba(5, 7, 10, 0.62) 52%,
+      rgba(5, 7, 10, 0.16) 74%,
+      transparent 88%
+    );
+  }
+
+  /* Narrow screens put the copy over the brightest part of the mesh, so the
+     scrim has to reach further before it fades out. */
+  @media (max-width: 640px) {
+    .hero-scrim {
+      background: radial-gradient(
+        96% 74% at 50% 46%,
+        rgba(5, 7, 10, 0.95),
+        rgba(5, 7, 10, 0.8) 55%,
+        rgba(5, 7, 10, 0.46) 78%,
+        rgba(5, 7, 10, 0.1) 94%
+      );
+    }
+  }
+
+  /* The deferred canvas fades in rather than popping once it mounts. */
+  .hero-canvas :global(canvas) {
+    animation: canvas-in 1s var(--ease-out-expo) both;
+  }
+
+  @keyframes canvas-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   /* Hero intro — pure CSS (no JS dependency) to keep LCP fast. */

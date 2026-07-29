@@ -8,7 +8,7 @@ export const categoryAccent: Record<string, AccentKey> = {
   'Data Engineering': 'blue',
   'Machine Learning': 'cyan',
   AI: 'violet',
-  'Data Science': 'amber',
+  'Data Science': 'emerald',
   'Full Stack': 'emerald',
 };
 
