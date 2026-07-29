@@ -35,6 +35,14 @@ export const timeline: TimelineEntry[] = [
     featured: true,
   },
   {
+    kind: 'education',
+    period: '2024 — 2026',
+    title: 'M.S. Computer Science',
+    org: 'Florida Atlantic University · USA',
+    summary: 'GPA 3.96. Focused on machine learning, applied statistics, and data systems.',
+    featured: true,
+  },
+  {
     kind: 'experience',
     period: 'Jan 2022 — Jun 2024',
     title: 'Data Scientist',
@@ -50,14 +58,6 @@ export const timeline: TimelineEntry[] = [
       'Developed Power BI dashboards showing alert volumes, fraud trends, investigator outcomes, and model stability for weekly risk and operations reviews.',
       'Operationalized batch scoring through Airflow, Docker, AWS, and REST APIs, enabling scheduled fraud detection and versioned releases.',
     ],
-    featured: true,
-  },
-  {
-    kind: 'education',
-    period: '2024 — 2026',
-    title: 'M.S. Computer Science',
-    org: 'Florida Atlantic University · USA',
-    summary: 'GPA 3.96. Focused on machine learning, applied statistics, and data systems.',
     featured: true,
   },
   {
